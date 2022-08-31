@@ -1,0 +1,32 @@
+.pes {
+    display: block;
+    width: 100%;
+    height: 136px;
+    background: #E4E4E4;
+}
+
+.pes-body {
+    width: 1000px;
+    height: 100%;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+}
+
+.pes-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.pes-content .img {
+    position: absolute;
+    right: 0;
+}
+
+.instalar {
+    position: absolute;
+    left: 0;
+    cursor: pointer;
+}

@@ -1,0 +1,17 @@
+{
+    "config": {
+        "platform-check": false
+    },
+    "autoload": {
+        "psr-4": {
+            "Conta\\": "conta/",
+            "Push\\": "push/"
+        }
+    },
+    "require": {
+        "envms/fluentpdo": "^2.2",
+        "phpmailer/phpmailer": "^6.6",
+        "mpdf/mpdf": "^8.1",
+        "minishlink/web-push": "^7.0"
+    }
+}

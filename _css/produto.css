@@ -1,0 +1,144 @@
+.produto-item {
+    display: grid;
+    grid-template-columns: 30% 69%;
+    width: 96.5%;
+    padding: 1.5%;
+    position: relative;
+    margin: 80px 0;
+}
+
+.produto-item .img {
+    width: 100%;
+    border: 1px solid #eaeaea;
+}
+
+.produto-item .img img {
+    width: 100%;
+}
+
+.produto-item .detalhes {
+    width: 100%;
+    padding-left: 2%;
+    position: relative;
+}
+
+.produto-item .detalhes img {
+    display: inline-block;
+}
+
+.produto-item .detalhes p {
+    display: inline-block;
+    margin: 0
+}
+
+.produto-item .detalhes .categoria {
+    display: block;
+    font-size: 16px;
+    color: red;
+    text-transform: capitalize;
+}
+
+.produto-item .detalhes .nome {
+    display: block;
+    text-transform: uppercase;
+    font-size: 20px;
+    margin-bottom: 13px;
+}
+
+.produto-item .detalhes .descricao {
+    display: block;
+    font-size: 20px;
+}
+
+.produto-item .detalhes .preco-total {
+    display: block;
+    font-size: 20px;
+}
+
+.produto-item .detalhes .preco-total img {
+    width: 20px;
+}
+
+.produto-item .detalhes .preco-unitario {
+    display: block;
+    font-size: 32px;
+    margin-bottom: 0;
+}
+
+.produto-item .detalhes .preco-unitario img {
+    width: 29px;
+}
+
+.produto-item .detalhes .qtd-action {
+    width: 284px;
+    height: 49px;
+    display: flex;
+    justify-content: space-between;
+    background: #D9D9D9;
+    align-items: center;
+    margin-top: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 2%;
+}
+
+.produto-item .detalhes .por-action {
+    width: 284px;
+    height: 49px;
+    margin-top: 2px;
+    position: absolute;
+    bottom: 0;
+    right: 2%;
+    cursor: pointer;
+}
+
+.produto-item .detalhes .qtd-action img {
+    width: 27px;
+    display: block;
+    margin: auto;
+}
+
+.produto-item .detalhes .qtd-action .mais {
+    width: 17.5%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid #00000032;
+    cursor: pointer
+}
+
+.produto-item .detalhes .qtd-action .menus {
+    width: 17.5%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid #00000032;
+    cursor: pointer;
+}
+
+.produto-item .detalhes .qtd-action .qtd {
+    width: 65%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.produto-item .detalhes .qtd-action .qtd input {
+    width: 95%;
+    height: 100%;
+    text-align: center;
+    border: none;
+    background: #FDF1F1;
+    font-size: 24px;
+}
+
+.produto-item .apaga {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 26px;
+    cursor: pointer;
+}

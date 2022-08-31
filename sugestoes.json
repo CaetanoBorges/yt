@@ -1,0 +1,26 @@
+[{
+        "id": "1",
+        "nome": "feijão",
+        "img": "feijao.png"
+    },
+    {
+        "id": "2",
+        "nome": "arroz",
+        "img": "arroz.png"
+    },
+    {
+        "id": "3",
+        "nome": "massa",
+        "img": "maca.png"
+    },
+    {
+        "id": "4",
+        "nome": "farinha de trigo",
+        "img": "farinha.png"
+    },
+    {
+        "id": "5",
+        "nome": "óleo",
+        "img": "oleo-fula.png"
+    }
+]

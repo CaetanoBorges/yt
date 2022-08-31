@@ -1,0 +1,31 @@
+[{
+    "id": "6hgrtuiopka",
+    "categoria": "retalho",
+    "subcategoria": "saco",
+    "stock": "stock",
+    "nome": "Saco de arroz uncle sam",
+    "descricao": "O Lorem Ipsum tem vindo a ser o texto padrão usado por estas indústrias desde o ano de 1500, quando uma misturou os caracteres de um texto para criar um espécime de livro.",
+    "preco": "595",
+    "qtd": "20",
+    "img": "slide1.png"
+}, {
+    "id": "shgrtuiopka",
+    "categoria": "retalho",
+    "subcategoria": "saco",
+    "stock": "stock",
+    "nome": "Saco de arroz uncle  25 kg",
+    "descricao": "O Lorem Ipsum tem vindo a ser o texto padrão usado por estas indústrias desde o ano de 1500, quando uma misturou os caracteres de um texto para criar um espécime de livro.",
+    "preco": "595",
+    "qtd": "20",
+    "img": "slide1.png"
+}, {
+    "id": "s6hgrtuipka",
+    "categoria": "retalho",
+    "subcategoria": "saco",
+    "stock": "stock",
+    "nome": "Saco de arroz sam 25 kg",
+    "descricao": "O Fofom Ipsum tem vindo a ser o texto padrão usado por estas indústrias desde o ano de 1500, quando uma misturou os caracteres de um texto para criar um espécime de livro.",
+    "preco": "595",
+    "qtd": "20",
+    "img": "slide1.png"
+}]
