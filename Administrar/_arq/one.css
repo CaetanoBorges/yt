@@ -5,7 +5,8 @@
 
 body {
     background-image: url("bg.jpg");
-    background-position: fixed;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .principal {

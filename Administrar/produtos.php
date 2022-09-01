@@ -23,7 +23,7 @@ if (isset($_SESSION['yetu-debliw'])) {
         <link rel="stylesheet" href="../_arq/bootstrap.min.css">
         <script src="../_arq/bootstrap.min.js"></script>
         <link rel="stylesheet" href="_arq/one.css">
-        <title>Sugestão</title>
+        <title>Produtos</title>
     </head>
     <style>
     .principal-corpo{width: 90%;display: block;padding: 5%;background-color: #ddd;}
@@ -44,7 +44,7 @@ if (isset($_SESSION['yetu-debliw'])) {
                     <div class="menu">
                     <?php
                     foreach($res as $key => $value){ ?>
-                        <a href="produto.php?p=$<?php echo $value['id'] ?>"><div class="menu-item" style="background: none;">
+                        <a href="produto.php?p=<?php echo $value['id'] ?>&s=<?php echo $value['stock'] ?>"><div class="menu-item" style="background: none;">
                             <img src="../prod/<?php echo $value['img'] ?>">
                             <h3><?php echo $value['nome'] ?></h3>
                         </div></a>
