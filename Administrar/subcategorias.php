@@ -5,6 +5,21 @@ session_start();
 
 require '../_API/vendor/autoload.php';
 
+if(isset($_POST['acao']) and !empty($_POST['acao'])){
+    $conexao = Funcoes::conexao();
+
+    
+    $apagar = $_POST['acao'];
+    $query = $conexao -> prepare("DELETE FROM subcategorias WHERE id = ?");
+    $query->bindValue(1,$apagar);
+    
+    if( $query->execute() ){
+        header('Location: subcategorias.php');
+        exit();
+    }
+    
+}
+
 if (isset($_SESSION['yetu-debliw'])) {
 
     $conexao = Funcoes::conexao();
@@ -22,23 +37,34 @@ if (isset($_SESSION['yetu-debliw'])) {
         <link rel="stylesheet" href="../_arq/bootstrap.min.css">
         <script src="../_arq/bootstrap.min.js"></script>
         <link rel="stylesheet" href="_arq/one.css">
-        <title>Subategorias</title>
+        <title>Subcategorias</title>
     </head>
     <style>
-    
+    .principal-corpo{width: 90%;display: block;padding: 5%;background-color: #ddd;}
+    .principal-corpo a{color:black;text-decoration: none;}
+    .principal-corpo a:hover{color:red;}
     
     </style>
     <body>
         <div class="principal">
-            <a href="index.php" class="titulo"><h2>SUBCATEGORIA</h2></a>
+            <a href="index.php" class="titulo"><h2>SUBCATEGORIAS</h2></a>
             <div class="principal-corpo">
                 <a href="addSubcategoria.php">ADICIONAR SUBCATEGORIA</a>
                 <br><br><br>
 
                 <?php
-                    echo "<p>".count($res)." Categorias</p><br>";
+                    echo "<p>".count($res)." Subcategorias</p><br>";
                     foreach($res as $key => $value){ ?>
-                        <a href="produtos.php?c=<?php echo $value['nome'] ?>"><h1><?php echo ($key+1)." - ".$value['nome'] ?></a></h1>
+                        <div class="card card-body">
+                            <h1 style="cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#collapseExample<?php echo $key ?>" aria-expanded="false" aria-controls="collapseExample<?php echo $key ?>"><?php echo ($key+1)." - ".$value['nome'] ?></h1> 
+                            <div class="collapse" id="collapseExample<?php echo $key ?>">
+                                <form action="subcategorias.php" method="post">
+                                    <button type="submit" class="btn btn-danger" name="acao" value="<?php echo $value['id'] ?>">APAGAR</button>
+                                    <button type="button" class="btn btn-success"  data-bs-toggle="collapse" data-bs-target="#collapseExample<?php echo $key ?>" aria-expanded="false" aria-controls="collapseExample<?php echo $key ?>">CANCELAR</button>
+                                </form>
+                                
+                            </div>
+                        </div>  
                     <?php }
                 ?>
             </div>

@@ -5,6 +5,21 @@ session_start();
 
 require '../_API/vendor/autoload.php';
 
+if(isset($_POST['acao']) and !empty($_POST['acao'])){
+    $conexao = Funcoes::conexao();
+
+    
+    $apagar = $_POST['acao'];
+    $query = $conexao -> prepare("DELETE FROM categorias WHERE id = ?");
+    $query->bindValue(1,$apagar);
+    
+    if( $query->execute() ){
+        header('Location: categorias.php');
+        exit();
+    }
+    
+}
+
 if (isset($_SESSION['yetu-debliw'])) {
 
     $conexao = Funcoes::conexao();
@@ -32,7 +47,7 @@ if (isset($_SESSION['yetu-debliw'])) {
     </style>
     <body>
         <div class="principal">
-            <a href="index.php" class="titulo"><h2>CATEGORIA</h2></a>
+            <a href="index.php" class="titulo"><h2>CATEGORIAS</h2></a>
             <div class="principal-corpo">
                 <a href="addCategoria.php">ADICIONAR CATEGORIA</a>
                 <br><br><br>
@@ -40,7 +55,16 @@ if (isset($_SESSION['yetu-debliw'])) {
                 <?php
                     echo "<p>".count($res)." Categorias</p><br>";
                     foreach($res as $key => $value){ ?>
-                        <a href="produtos.php?c=<?php echo $value['nome'] ?>"><h1><?php echo ($key+1)." - ".$value['nome'] ?></a></h1>
+                        <div class="card card-body">
+                            <h1 style="cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#collapseExample<?php echo $key ?>" aria-expanded="false" aria-controls="collapseExample<?php echo $key ?>"><?php echo ($key+1)." - ".$value['nome'] ?></h1> 
+                            <div class="collapse" id="collapseExample<?php echo $key ?>">
+                                <form action="categorias.php" method="post">
+                                    <button type="submit" class="btn btn-danger" name="acao" value="<?php echo $value['id'] ?>">APAGAR</button>
+                                    <button type="button" class="btn btn-success"  data-bs-toggle="collapse" data-bs-target="#collapseExample<?php echo $key ?>" aria-expanded="false" aria-controls="collapseExample<?php echo $key ?>">CANCELAR</button>
+                                </form>
+                                
+                            </div>
+                        </div>  
                     <?php }
                 ?>
             </div>
