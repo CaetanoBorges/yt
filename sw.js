@@ -152,6 +152,8 @@ self.addEventListener('notificationclick', function(e) {
     //console.log(e);
     if (e.action == "Abrir") {
         //console.log(e.notification.data);
-        clients.openWindow("p.php?" + e.notification.data);
+        //clients.openWindow("p.php?" + e.notification.data);
+
+        clients.openWindow(".");
     }
 })

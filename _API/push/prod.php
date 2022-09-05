@@ -57,7 +57,7 @@ if(isset($_POST['user']) and !empty($_POST['user'])){
     );
 
     if ($result -> isSuccess()) {
-        header('Location: ../../Administrar/usuarios.php');
+        header('Location: ../../Administrar/usuarios.php?u='.$_POST['user']);
         exit();
     }
     else {
@@ -67,7 +67,7 @@ if(isset($_POST['user']) and !empty($_POST['user'])){
                 O usuario desativou as notificações.<br>
                 Só poderá ser notificado depois de as ativar novamente.
                 <br><br>
-                <a href="../../Administrar/usuarios.php"> Click aqui para voltar</a>
+                <a href="../../Administrar/usuarios.php?u=<?php echo $_POST['user'] ?>"> Click aqui para voltar</a>
             </div>
         <?php
         // something went wrong

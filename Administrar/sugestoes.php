@@ -5,6 +5,21 @@ session_start();
 
 require '../_API/vendor/autoload.php';
 
+if(isset($_POST['acao']) and !empty($_POST['acao'])){
+    $conexao = Funcoes::conexao();
+
+    
+    $apagar = $_POST['acao'];
+    $query = $conexao -> prepare("DELETE FROM sugestoes WHERE id = ?");
+    $query->bindValue(1,$apagar);
+    
+    if( $query->execute() ){
+        header('Location: sugestoes.php');
+        exit();
+    }
+    
+}
+
 if (isset($_SESSION['yetu-debliw'])) {
 
     $conexao = Funcoes::conexao();
@@ -45,7 +60,14 @@ if (isset($_SESSION['yetu-debliw'])) {
                     foreach($res as $key => $value){ ?>
                         <div class="menu-item" style="background: none;">
                             <img src="../prod/<?php echo $value['img'] ?>">
-                            <h3><?php echo $value['nome'] ?></h3>
+                            <h3 style="cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#collapseExample<?php echo $key ?>" aria-expanded="false" aria-controls="collapseExample<?php echo $key ?>"><?php echo $value['nome'] ?></h3>
+                            <div class="collapse" id="collapseExample<?php echo $key ?>">
+                                <form action="sugestoes.php" method="post">
+                                    <button type="submit" class="btn btn-danger" name="acao" value="<?php echo $value['id'] ?>">APAGAR</button>
+                                    <button type="button" class="btn btn-success"  data-bs-toggle="collapse" data-bs-target="#collapseExample<?php echo $key ?>" aria-expanded="false" aria-controls="collapseExample<?php echo $key ?>">CANCELAR</button>
+                                </form>
+                                
+                            </div>
                         </div>
                     <?php }
                 ?>
