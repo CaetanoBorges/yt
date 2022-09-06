@@ -1,15 +1,15 @@
 <?php
-namespace ContaAPI;
+namespace Conta;
 
 use PHPMailer\PHPMailer\PHPMailer;
-use ContaAPI\Classes\Criptografia;
-use ContaAPI\Classes\Cadastrar;
-use ContaAPI\Classes\Entrar;
-use ContaAPI\Classes\Funcoes;
+use Conta\Classes\Criptografia;
+use Conta\Classes\Cadastrar;
+use Conta\Classes\Entrar;
+use Conta\Classes\Funcoes;
 
 
-use ContaAPI\Classes\DB\Selecionar;
-use ContaAPI\Classes\DB\AX;
+use Conta\Classes\DB\Selecionar;
+use Conta\Classes\DB\AX;
 
 //Load Composer's autoloader
 require '../vendor/autoload.php';
@@ -21,18 +21,10 @@ if(isset($_POST["json"])){
     $conexao = $funcoes::conexao();
     $json = $_POST["json"];
     $array = (array) json_decode($json);
-    /* ARRAY FIELDS
-    $array['nome'] = $_POST['nome'];
-    $array['email'] = $_POST['email'];
-    $array['apelido'] = $_POST['apelido'];
-    $array['dia'] = $_POST['dia'];
-    $array['mes'] = $_POST['mes'];
-    $array['ano'] = $_POST['ano'];
-    $array['palavra_passe'] = $_POST['palavra_passe'];
-    $array['genero'] = $_POST['genero'];
-    $array['telefone'] = $_POST['telefone'];
-    */
+
+    /* ARRAY FIELDS */
     #var_dump($array);
+
     $db = new Selecionar($conexao);
     $init = new Cadastrar($db,$array, $funcoes);
      
@@ -42,10 +34,9 @@ if(isset($_POST["json"])){
         $init = new Entrar($db, $array['email'], $array['palavra_passe']);
         if($init->login()){
             $mailer = new PHPMailer(true);
-            $copy = '&copy;';
             $corp = file_get_contents("emailTemplates/boasVindas.html");
-            $corpo=str_replace("--COPYRIGHT--",$copy." ".date("Y"),$corp);
-            $enviar = $funcoes::enviaEmail($mailer, $array['email'], "Seja benvindo/a, Binga.", $corpo);
+            $corpo=str_replace("--contacto--","999 999 999",$corp);
+            $enviar = $funcoes::enviaEmail($mailer, $array['email'], "Seja benvindo/a, YETU.", $corpo);
 
 
             $credencial['user']=$init->getUser();

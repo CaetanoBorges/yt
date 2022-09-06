@@ -5,6 +5,25 @@ session_start();
 
 require '../_API/vendor/autoload.php';
 
+
+if(isset($_POST['id']) and !empty($_POST['id'])){
+    $conexao = Funcoes::conexao();
+
+    $id=$_POST['id'];
+    $user=$_POST['user'];
+
+    $query = $conexao -> prepare("UPDATE pedidos SET confirmado = ? WHERE id = ? AND chave_user = ?");
+    $query->bindValue(1,true);
+    $query->bindValue(2,$id);
+    $query->bindValue(3,$user);
+    
+    if( $query->execute() ){
+        header('Location: compras.php?u='.$user);
+        exit();
+    }
+    
+}
+
 if (isset($_SESSION['yetu-debliw'])) {
 
     $conexao = Funcoes::conexao();
@@ -29,7 +48,7 @@ if (isset($_SESSION['yetu-debliw'])) {
         <link rel="stylesheet" href="../_arq/bootstrap.min.css">
         <script src="../_arq/bootstrap.min.js"></script>
         <link rel="stylesheet" href="_arq/one.css">
-        <title>Sugestão</title>
+        <title>Compras</title>
     </head>
     <style>
     .principal-corpo{width: 90%;display: block;padding: 5%;background-color: #ddd;}
@@ -45,6 +64,7 @@ if (isset($_SESSION['yetu-debliw'])) {
 
                 <?php
                     echo "<p>".count($resPedidos)." Pedido(s)</p><br>";
+                    
                     ?>
                     <div class="card card-body">
                     <?php
@@ -53,7 +73,7 @@ if (isset($_SESSION['yetu-debliw'])) {
                         if($value['confirmado']){  $background = "green"; }
                         ?>
                         <div  style="background: none;">
-                            <h3 style="cursor: pointer;background:<?php  echo $background; ?>;padding:10px;color:black;" data-bs-toggle="collapse" data-bs-target="#collapseExample<?php echo $key ?>" aria-expanded="false" aria-controls="collapseExample<?php echo $key ?>"><?php echo number_format($value['total'], 0, '', ' '); ?></h3>
+                            <h3 style="cursor: pointer;background:<?php  echo $background; ?>;padding:10px;color:black;" data-bs-toggle="collapse" data-bs-target="#collapseExample<?php echo $key ?>" aria-expanded="false" aria-controls="collapseExample<?php echo $key ?>"><?php echo number_format($value['total'], 0, '', ' '); ?> kz</h3>
                             <div class="collapse" id="collapseExample<?php echo $key ?>">
                                 <?php
                                     $datetimeFormat = 'd-m-Y H:i:s';
@@ -61,7 +81,7 @@ if (isset($_SESSION['yetu-debliw'])) {
                                    // $date = new \DateTime();
                                     // If you must have use time zones
                                     $date = new \DateTime('now', new \DateTimeZone('Africa/Luanda'));
-                                    $date->setTimestamp(1662415877);
+                                    $date->setTimestamp($value['timestamp']);
                                     echo $date->format($datetimeFormat)."<br>";
                                     $itens=json_decode($value['itens']);
                                     echo count($itens)." item(s)<br><br>";
@@ -71,18 +91,30 @@ if (isset($_SESSION['yetu-debliw'])) {
                                         <div style="width: 100%;display:block;position:relative;">   
                                             <img src="../prod/<?php echo $v['img'] ?>" style="position:absolute;width:110px;top:0;right:0;">
                                             <p class="item">Nome: <b><?php echo $v['nome'] ?></b></p>
-                                            <p class="item">Preco: <b><?php echo $v['preco'] ?></b></p>
+                                            <p class="item">Preco: <b><?php echo number_format($v['preco'], 0, '', ' ') ?> kz</b></p>
                                             <p class="item">Quantidade: <b><?php echo $v['qtd'] ?></b></p>
-                                            <p class="item">Total: <b><?php echo $v['total'] ?></b></p>
+                                            <p class="item">Total: <b><?php echo number_format($v['total'], 0, '', ' ') ?> kz</b></p>
                                         </div>
                                         <hr>
                                     <?php }
                                 ?>
                                 <?php
                                     if($value['confirmado']){?>
-                                        <a href="notificar.php?u=<?php echo $value['id'] ?>" class="btn btn-success" >CONFIRMADO</a>
+                                        <p class="btn btn-success" >CONFIRMADO</p>
                                     <?php }else{?>
-                                        <a href="notificar.php?u=<?php echo $value['id'] ?>" class="btn btn-danger" >CONFIRMAR</a>
+                                        <form action="compras.php" method="post">
+                                            <input type="hidden" name="id" value="<?php echo $value['id'] ?>">
+                                            <input type="hidden" name="user" value="<?php echo $value['chave_user'] ?>">
+                                            <button type="button" class="btn btn-danger form-control" style="width:100% !important;"  data-bs-toggle="collapse" data-bs-target="#collapseExample<?php echo $value['id'] ?>" aria-expanded="false" aria-controls="collapseExample<?php echo $value['id'] ?>">CONFIRMAR</button>
+                                          
+                                            <div class="collapse" id="collapseExample<?php echo $value['id'] ?>">
+                                                    <div class="card card-body">
+                                                        <button type="submit" class="btn btn-danger">CONFIRMAR MESMO</button>
+                                                        <button type="button" class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#collapseExample<?php echo $value['id'] ?>" aria-expanded="false" aria-controls="collapseExample<?php echo $value['id'] ?>">NÃO</button>
+                                                    </div>
+                                            </div>
+
+                                        </form>
                                     <?php }
                                 ?>
                             </div>

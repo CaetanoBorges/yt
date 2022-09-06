@@ -1,13 +1,13 @@
 <?php
-namespace ContaAPI;
+namespace Conta;
 
 use PHPMailer\PHPMailer\PHPMailer;
-use ContaAPI\Classes\Criptografia;
-use ContaAPI\Classes\Recuperar;
-use ContaAPI\Classes\Entrar;
-use ContaAPI\Classes\Funcoes;
-use ContaAPI\Classes\DB\Selecionar;
-use ContaAPI\Classes\DB\AX;
+use Conta\Classes\Criptografia;
+use Conta\Classes\Recuperar;
+use Conta\Classes\Entrar;
+use Conta\Classes\Funcoes;
+use Conta\Classes\DB\Selecionar;
+use Conta\Classes\DB\AX;
 
 require '../vendor/autoload.php';
 
@@ -28,10 +28,9 @@ if(isset($_POST['email'])){
     if($verificar){
         $mailer = new PHPMailer(true);
         $numero = $funcoes::seisDigitos();
-        $copy = '&copy;';
         $corp = file_get_contents("emailTemplates/numeroRecuperacao.html");
-        $cor=str_replace("--CODIGORENOVACAO--",$numero,$corp);
-        $corpo=str_replace("--COPYRIGHT--",$copy." ".date("Y"),$cor);
+        $cor=str_replace("--codigo--",$numero,$corp);
+        $corpo=str_replace("--endereco--","Mapunda de baixo rsrs",$cor);
         $enviar = $funcoes::enviaEmail($mailer, $email, "Recuperação de palavra passe", $corpo);
 
         if($enviar){

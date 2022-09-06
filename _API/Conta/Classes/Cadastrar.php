@@ -22,10 +22,11 @@ class Cadastrar
         $mail = AX::attr($this->array['email']);
 
         $res = $this->db->count("email")
-        ->from(AX::tb("conta"))
+        ->from(AX::tb("usuario"))
         ->where(["email = $mail"])
         ->pegaResultado();
-        if($res['email'] > 0){
+        $par = (int) $res['email'];
+        if($par > 0){
             return true;
         }else{
             return false;
@@ -56,26 +57,15 @@ class Cadastrar
 
     public function novoUser($array)
     {
-        $res = $this->db->insert("conta",
-        ["chave" => AX::attr($this->funcoes::chaveDB()), 
+        $res = $this->db->insert("usuario",
+        ["id" => AX::attr($this->funcoes::chaveDB()), 
         "nome" => AX::attr($array['nome']),
-        "apelido" => AX::attr($array['apelido']),
-        "genero" => AX::attr($array['genero']),
-        "dia_nascimento" => AX::attr($array['dia']),
-        "mes_nascimento" => AX::attr($array['mes']),
-        "ano_nascimento" => AX::attr($array['ano']),
         "telefone" => AX::attr($array['telefone']),
         "email" => AX::attr($array['email']),
+        "bairro" => AX::attr($array['bairro']),
+        "rua" => AX::attr($array['rua']),
         "palavra_passe" => AX::attr($this->funcoes::fazHash($array['palavra_passe'])),
-        "dia_entrada" => AX::attr(date('d')),
-        "mes_entrada" => AX::attr(date('m')),
-        "ano_entrada" => AX::attr(date('Y')),
-        "codigo_renova" => AX::attr(0),
-        "pais" => AX::attr("Angola"),
-        "provincia" => AX::attr(" "),
-        "municipio" => AX::attr(" "),
-        "bairro_rua" => AX::attr(" "),
-        "foto" => AX::attr("default.png")])
+        "codigo_renova" => AX::attr(0)])
         ->executaQuery();
 
         if ($res) {

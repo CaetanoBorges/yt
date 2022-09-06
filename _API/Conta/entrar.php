@@ -1,11 +1,10 @@
 <?php
-namespace ContaAPI;
 
-use ContaAPI\Classes\Criptografia;
-use ContaAPI\Classes\Entrar;
-use ContaAPI\Classes\Funcoes;
-use ContaAPI\Classes\DB\Selecionar;
-use ContaAPI\Classes\DB\AX;
+use Conta\Classes\Criptografia;
+use Conta\Classes\Entrar;
+use Conta\Classes\Funcoes;
+use Conta\Classes\DB\Selecionar;
+use Conta\Classes\DB\AX;
 
 require '../vendor/autoload.php';
 

@@ -52,9 +52,9 @@
                         </div>
                 <div>
                     <p>Palavra passe</p>
-                    <input type="password">
+                    <input type="password" id="pass-user">
                 </div>
-                <img src="_icones/btn-cadastrar.png" class="btn-cadastrar">
+                <img src="_icones/btn-cadastrar.png" class="btn-cadastrar" style="cursor:pointer">
                 <p class="consentimento">Ao clicar em cadastrar estará a concordar<br>
                 com os <span>termos de uso</span> e de <span>privacidade</span> da<br>
                 plataforma YETU.</p>
@@ -71,24 +71,51 @@
 
     
      <script>
-    $(document).ready(function() {
-        tbUser.getItem("dados").then(function(res) {
-            if (res) {
-                $("#nome-user").val(res.nome);
-
-                $("#rua-user").val(res.rua);
-
-                $("#bairro-user").val(res.bairro);
-
-                $("#email-user").val(res.email);
-
-                $("#telefone-user").val(res.telefone);
-
-                return
+        $(".btn-cadastrar").click(function(){
+            var nome = $("#nome-user").val();
+            var rua = $("#rua-user").val();
+            var bairro = $("#bairro-user").val();
+            var email = $("#email-user").val();
+            var telefone = $("#telefone-user").val();
+            var pass = $("#pass-user").val();
+            if(maior(nome, 6) && maior(rua, 4) && maior(bairro, 4) && maior(email, 6) && maior(telefone, 8) && maior(pass,6)){
+                $.post("_API/Conta/cadastrar.php",{json: JSON.stringify({nome: nome, rua: rua, bairro: bairro, email: email, telefone: telefone, palavra_passe: pass})}).done(function(dados){
+                    console.log(dados);
+                    var obj = JSON.parse(dados);
+                    if(obj.ok){ 
+                        tbUser.setItem("token", obj.payload).then(function(e){
+                            tbUser.setItem("dados",{nome: nome, rua: rua, bairro: bairro, email: email, telefone: telefone}).then(function(e){
+                                location.href = "conta.php";
+                            })
+                        })
+                    }else{
+                        notificacao(obj.payload);
+                    }
+                })
+            }else{
+                notificacao("Precisa preencher os campos corretamente!");
             }
-
         })
-    });
+
+        $(document).ready(function() {
+            tbUser.getItem("dados").then(function(res) {
+                if (res) {
+                    $("#nome-user").val(res.nome);
+
+                    $("#rua-user").val(res.rua);
+
+                    $("#bairro-user").val(res.bairro);
+
+                    $("#email-user").val(res.email);
+
+                    $("#telefone-user").val(res.telefone);
+
+                    return
+                }
+
+            })
+        });
+
      </script>
 </body>
 </html>

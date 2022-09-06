@@ -30,15 +30,15 @@
             <img src="_icones/user.png" class="user">
                 <div>
                     <p>Email</p>
-                    <input type="email">
+                    <input type="email" id="email">
                 </div>
                 <div>
                     <p>Palavra passe</p>
-                    <input type="password">
+                    <input type="password" id="pass">
                 </div>
-                <img src="_icones/btn-entrar.png" class="btn-entrar">
+                <img src="_icones/btn-entrar.png" class="btn-entrar" style="cursor:pointer;">
                 <p class="esqueci">Esqueci<br>a palavra passe</p>
-                <img src="_icones/btn-cadastrar.png" class="btn-cadastrar">
+                <img src="_icones/btn-cadastrar.png" class="btn-cadastrar" style="cursor:pointer;">
             </div>
         
     </div>
@@ -52,7 +52,26 @@
 
     
      <script>
-       
+        tbUser.getItem("token").then(function(e){
+            if(e){
+                location.href = "index.php";
+            }
+        })
+
+        $(".btn-entrar").click(function(){
+            var email = $("#email").val();
+            var pass = $("#pass").val();
+            var json = JSON.stringify({email: email, palavra_passe: pass});
+            $.post("_API/Conta/entrar.php",{json: json}).done(function(data){
+                console.log(data);
+                var obj = JSON.parse(data);
+                if(obj.ok){ 
+                    tbUser.setItem("token", obj.payload).then(function(e){
+                        location.href = "conta.php";
+                    })
+                }
+            })
+        })
      </script>
 </body>
 </html>

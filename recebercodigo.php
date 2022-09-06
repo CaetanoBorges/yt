@@ -32,7 +32,7 @@
                     <p>Email</p>
                     <input type="email">
                 </div>
-                <img src="_icones/receber-codigo.png" class="btn-receber">
+                <img src="_icones/receber-codigo.png" class="btn-receber" style="cursor: pointer;">
             </div>
             <br><br><br><br>
     </div>
@@ -43,10 +43,12 @@
     ?>
 
     <?php include("_partes/script.php") ?>
-
-    
      <script>
-       
+        $(".btn-receber").click(function(){
+            $.post("_API/Conta/cadastrar.php",).done(function(data){
+                
+            })
+        })
      </script>
 </body>
 </html>

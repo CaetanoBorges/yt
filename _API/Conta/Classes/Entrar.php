@@ -34,7 +34,7 @@ class Entrar
         $email = AX::attr($this->email);
 
         $user = $this->db->select()
-        ->from(AX::tb("conta"))
+        ->from(AX::tb("usuario"))
         ->where(["email = $email", "palavra_passe = $pass"])
         ->pegaResultado();
         

@@ -17,7 +17,7 @@ class Recuperar
         $mail = AX::attr($email);
 
         $res = $this->db->count("email")
-        ->from(AX::tb("conta"))
+        ->from(AX::tb("usuario"))
         ->where(["email = $mail"])
         ->pegaResultado();
 
@@ -33,7 +33,7 @@ class Recuperar
         $cod = AX::attr($codigo);
         $mail = AX::attr($email);
 
-        $res = $this->db->update("conta")
+        $res = $this->db->update("usuario")
         ->set(["codigo_renova = $cod"])
         ->where(["email = $mail"])
         ->executaQuery();
@@ -50,7 +50,7 @@ class Recuperar
         $mail = AX::attr($email);
 
         $res = $this->db->count("email")
-        ->from(AX::tb("conta"))
+        ->from(AX::tb("usuario"))
         ->where(["email = $mail","codigo_renova = $cod"])
         ->pegaResultado();
 
@@ -66,39 +66,21 @@ class Recuperar
         $cod = AX::attr($codigo);
         $mail = AX::attr($email);
 
-        $res = $this->db->update(AX::tb("conta"))
+        $res = $this->db->update(AX::tb("usuario"))
         ->set(["codigo_renova = 0"])
         ->where(["email = $mail","codigo_renova = $cod"])
         ->executaQuery();
     
     }
-    public function pegaPalavraPasseEsquecida($email){
 
-        $mail = AX::attr($email);
 
-        $res = $this->db->select()
-        ->from("conta")
-        ->where(["email = $mail"])
-        ->pegaResultado();
-
-        return $res['palavra_passe'];
-    }
-    public function atualizaHistoricoPalavraPasse($user,$passAtual){
-        $us = AX::attr($user);
-        $pass = AX::attr($passAtual);
-        $time = AX::attr(time());
-
-        $res = $this->db->insert("historicopalavrapasse",["chave_user" => $us, "palavra_passe" => $pass, "quando" => $time])
-        ->executaQuery();
-
-    }
     public function novaPasse($email, $codigo, $palavra_passe)
     {   
         $mail = AX::attr($email);
         $cod = AX::attr($codigo);
         $pass = AX::attr(Funcoes::fazHash($palavra_passe));
 
-        $res = $this->db->update("conta")
+        $res = $this->db->update("usuario")
         ->set(["palavra_passe = $pass"])
         ->where(["email = $mail","codigo_renova = $cod"])
         ->executaQuery();
@@ -116,9 +98,9 @@ class Recuperar
         $us = AX::attr($user);
         $pass = AX::attr(Funcoes::fazHash($palavra_passe));
 
-        $res = $this->db->update("conta")
+        $res = $this->db->update("usuario")
         ->set(["palavra_passe = $pass"])
-        ->where(["chave = $us"])
+        ->where(["id = $us"])
         ->executaQuery();
         if($res){
             return true;
