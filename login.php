@@ -37,7 +37,7 @@
                     <input type="password" id="pass">
                 </div>
                 <img src="_icones/btn-entrar.png" class="btn-entrar" style="cursor:pointer;">
-                <p class="esqueci">Esqueci<br>a palavra passe</p>
+                <a href="esqueci.php" style="color: black;text-decoration:none;"><p class="esqueci">Esqueci<br>a palavra passe</p></a>
                 <img src="_icones/btn-cadastrar.png" class="btn-cadastrar" style="cursor:pointer;">
             </div>
         
@@ -59,6 +59,7 @@
         })
 
         $(".btn-entrar").click(function(){
+            loader("_icones/preloader.gif");
             var email = $("#email").val();
             var pass = $("#pass").val();
             var json = JSON.stringify({email: email, palavra_passe: pass});
@@ -66,10 +67,15 @@
                 console.log(data);
                 var obj = JSON.parse(data);
                 if(obj.ok){ 
+                    pegaUser(obj.payload);
                     tbUser.setItem("token", obj.payload).then(function(e){
                         location.href = "conta.php";
                     })
+                }else{
+                    notificacao(obj.payload);
                 }
+            }).always(function(a){
+                loader("_icones/preloader.gif");
             })
         })
      </script>

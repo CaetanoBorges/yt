@@ -30,13 +30,13 @@
             <div class="cliente-form">
                 <div>
                     <p>Email</p>
-                    <input type="email">
+                    <input type="email" id="email">
                 </div>
                 <div>
                     <p>Código de recuperação</p>
-                    <input type="text">
+                    <input type="number" id="numero">
                 </div>
-                <img src="_icones/btn-validar-codigo.png" class="btn-Validar">
+                <img src="_icones/btn-validar-codigo.png" class="btn-Validar" style="cursor: pointer;">
             </div>
             <br><br><br><br>
     </div>
@@ -50,7 +50,28 @@
 
     
      <script>
-       
+        
+        var email = localStorage.getItem("email");
+        if(maior(email,5)){
+            $("#email").val(email);
+        }
+        $(".btn-Validar").click(function(){
+            loader("_icones/preloader.gif");
+            var email = $("#email").val();
+            var numero = $("#numero").val();
+            $.post("_API/Conta/verificacodigoeemail.php",{email: email, numero: numero}).done(function(dados){
+                    console.log(dados);
+                    var obj = JSON.parse(dados);
+                    if(obj.ok){ 
+                        localStorage.setItem("numero", numero);
+                        location.href="novapalavrapasse.php";
+                    }else{
+                        notificacao(obj.payload);
+                    }
+            }).always(function(a){
+                loader("_icones/preloader.gif");
+            })
+        })
      </script>
 </body>
 </html>

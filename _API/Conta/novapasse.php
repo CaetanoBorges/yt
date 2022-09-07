@@ -1,12 +1,12 @@
 <?php
-namespace ContaAPI;
+namespace Conta;
 
-use ContaAPI\Classes\Criptografia;
-use ContaAPI\Classes\Recuperar;
-use ContaAPI\Classes\Entrar;
-use ContaAPI\Classes\Funcoes;
-use ContaAPI\Classes\DB\Selecionar;
-use ContaAPI\Classes\DB\AX;
+use Conta\Classes\Criptografia;
+use Conta\Classes\Recuperar;
+use Conta\Classes\Entrar;
+use Conta\Classes\Funcoes;
+use Conta\Classes\DB\Selecionar;
+use Conta\Classes\DB\AX;
 
 require '../vendor/autoload.php';
 
@@ -27,7 +27,6 @@ if(isset($_POST['email'])){
         return;
     }
 
-    $passAtual = $recuperar->pegaPalavraPasseEsquecida($email);
     $verificar = $recuperar->novaPasse($email,$numero, $palavra_passe);
 
     if($verificar){
@@ -36,9 +35,6 @@ if(isset($_POST['email'])){
         if($init->login()){
             $credencial['user']=$init->getUser();
             $credencial['email']=$init->getEmail();
-
-
-            $recuperar->atualizaHistoricoPalavraPasse($credencial['user'],$passAtual);
 
             $credencial = json_encode($credencial);
             

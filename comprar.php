@@ -60,7 +60,7 @@
     ?>
 
     <?php include("_partes/script.php") ?>
-
+ 
     
      <script>
         function fazerPedido(){
@@ -71,8 +71,9 @@
                 }).then(function(){
                     tbUser.getItem("dados").then(function(user){
                         console.log(carrinho, user);
-                        $.post("",{user: user, carrinho: carrinho}).done(function(response){
-
+                        $.post("_API/pedido/numero.php",{numero: user.telefone, email: user.email}).done(function(response){
+                            
+                            location.href = "comprar.php";
                         })
                         
                     })
@@ -92,10 +93,23 @@
                 carrinho.push(res);
             }).then(function(){
                 tbUser.getItem("dados").then(function(user){
+                    var use = user;
                     console.log(carrinho, user);
-                    $.post("",{user: user, carrinho: carrinho}).done(function(response){
-
+                    tbUser.getItem("token").then(function(token){
+                        var user = '';
+                        if(token){
+                            user = token;
+                        }
+                        $.post("_API/pedido/confirmar.php",{token:user,numero: numero, user: use, carrinho: carrinho}).done(function(response){
+                            console.log(response);
+                            var obj = JSON.parse(response)
+                            if(obj.ok){
+                                tbCarrinho.clear();
+                                location.href = "acaminho.php";
+                            }
+                        })
                     })
+                    
                         
                 })
 

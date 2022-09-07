@@ -105,9 +105,9 @@
                 }).then(function(){
                     tbUser.getItem("dados").then(function(user){
                         console.log(carrinho, user);
-                        location.href = "comprar.php";
-                        $.post("",{user: user, carrinho: carrinho}).done(function(response){
-
+                        $.post("_API/pedido/numero.php",{numero: user.telefone, email: user.email}).done(function(response){
+                            console.log(response);
+                            location.href = "comprar.php";
                         })
                         
                     })

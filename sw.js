@@ -135,8 +135,12 @@ self.addEventListener('sync', function(event) {
         pegaCategorias();
         pegaSlide();
 
-        pegaUser();
-        pegaCompras();
+        tbUser.getItem("token").then(function(token) {
+            if (token) {
+                pegaUser(token);
+                pegaCompras(token);
+            }
+        })
 
     }
 });

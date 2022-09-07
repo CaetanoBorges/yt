@@ -107,7 +107,7 @@ if (isset($_SESSION['yetu-debliw'])) {
                     <label for="imagem">Imagem</label>
                     <input type="file" id="imagem" name="imagem" class="form-control" required="required">
 <br>
-                    <textarea name="descricao" maxlength="225" placeholder="Descrição do produto" class="form-control" required="required"></textarea>
+                    <textarea name="descricao" maxlength="221" placeholder="Descrição do produto" class="form-control" required="required"></textarea>
                     <br>
                     <button type="submit" class="btn btn-success form-control" style="width:100% !important;">INSERIR PRODUTO</button>
                 </form>

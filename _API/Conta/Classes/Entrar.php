@@ -49,7 +49,7 @@ class Entrar
 
     public function getUser()
     {
-        return $this->user['chave'];
+        return $this->user['id'];
     }
     public function getEmail()
     {

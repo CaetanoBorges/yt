@@ -1,7 +1,7 @@
 <?php
 
-use ContaAPI\Classes\Criptografia;
-use ContaAPI\Classes\Funcoes;
+use Conta\Classes\Criptografia;
+use Conta\Classes\Funcoes;
 
 require '../../vendor/autoload.php';
 
@@ -17,7 +17,7 @@ if(isset($_GET['token'])){
 
         $acesso = $funcoes::valid($TOKEN);
       
-        $query = $conexao->prepare("SELECT * FROM conta WHERE chave = ?");
+        $query = $conexao->prepare("SELECT * FROM usuario WHERE id = ?");
         $query->bindValue(1, $acesso['user']);
         $query->execute();
         $re = $query->fetch();

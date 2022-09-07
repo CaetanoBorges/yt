@@ -59,7 +59,7 @@
             <div class="clear"></div>
            
            <a href="#" data-bs-toggle="modal" data-bs-target="#editarmodal"><img src="_icones/btn-edita-perfil.png" alt="" class="btn-acao"></a>
-           <a href="#" data-bs-toggle="modal" data-bs-target="#passemodal"><img src="_icones/btn-mudar-passe.png" alt="" class="btn-acao"></a>
+           
 
         </div>
         <br><br><br><br><br><br><br>
@@ -97,46 +97,12 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <img src="_icones/btn-edita-perfil.png" class="btn-acao centrar">
+                    <img src="_icones/btn-edita-perfil.png" class="btn-acao centrar btn-editar" style="cursor:pointer">
                 </div>
                 </div>
             </div>
         </div>
-
-
-
-        <div class="modal fade" id="passemodal" tabindex="-1" aria-labelledby="passemodalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable modal-lg">
-                <div class="modal-content">
-
-                <div class="modal-header">
-                    <h2 style="display:block;margin:0 auto;font-size:32px">Mudar palavra passe</h2>
-                    <!--<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
-                </div>
-                <div class="modal-body">
-                    <div class="cliente-form">
-                        <div>
-                            <p>Palavra passe antiga</p>
-                            <input type="password">
-                        </div>
-                        <div>
-                            <p>Palavra passe nova</p>
-                            <input type="password">
-                        </div>
-
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <img src="_icones/btn-mudar-passe.png" alt="" class="btn-acao centrar">
-                </div>
-                </div>
-            </div>
-        </div>
-
-
-    </div>
-     
-           
+    </div>    
     <?php
         include("_partes/pes.php");
     ?>
@@ -145,7 +111,43 @@
     <script src="_js/paginas/conta.js"></script>
     
      <script>
-       
+       $(".btn-editar").click(function(){
+            var nome = $("#nome-user").val();
+            var rua = $("#rua-user").val();
+            var bairro = $("#bairro-user").val();
+            var email = $("#email-user").val();
+            var telefone = $("#telefone-user").val();
+            
+            if(maior(nome, 6) && maior(rua, 4) && maior(bairro, 4) && maior(email, 6) && maior(telefone, 8)){
+                tbUser.getItem("token").then(function(token){
+                    if(token){
+                        loader("_icones/preloader.gif");
+                        $.post("_API/Conta/Dados/alterarDados.php",{token: token,nome: nome, rua: rua, bairro: bairro, email: email, telefone: telefone}).done(function(dados){
+                            console.log(dados);
+                            var obj = JSON.parse(dados);
+                            if(obj.ok){ 
+                                tbUser.setItem("token", obj.payload).then(function(e){
+                                    tbUser.setItem("dados",{nome: nome, rua: rua, bairro: bairro, email: email, telefone: telefone}).then(function(e){
+                                        location.reload();
+                                    })
+                                })
+                            }else{
+                                notificacao(obj.payload);
+                            }
+                        }).always(function(a){
+                            loader("_icones/preloader.gif");
+                        })
+                    }else{
+                        notificacao("Precisa estar cadastrado")
+                        tbUser.setItem("dados",{nome: nome, rua: rua, bairro: bairro, email: email, telefone: telefone}).then(function(e){
+                            location.reload();
+                        })
+                    }
+                })
+            }else{
+                notificacao("Precisa preencher os campos corretamente!");
+            }
+        })
      </script>
 </body>
 </html>

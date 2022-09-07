@@ -36,7 +36,7 @@ if(isset($_POST['email'])){
         if($enviar){
             $recuperar->selecionaNumeroDeRecuperacao($email, $numero);
             $res['ok'] = true;
-            $res['payload'] = "Número de verificação enviado";
+            $res['payload'] = "Número de verificação enviado"; 
             echo json_encode($res);
         }else{
 

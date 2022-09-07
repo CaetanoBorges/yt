@@ -4,4 +4,4 @@ setTimeout(function() {
             <option value="${value.nome}">${value.nome}</option>
         `)
     }).then();
-}, 0)
+}, 1000)

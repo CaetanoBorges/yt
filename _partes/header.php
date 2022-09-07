@@ -13,7 +13,7 @@
     
 </div>
 
-<div class="header header-middle">
+<div class="header header-middle" style="position: sticky;top:0;z-index:9997;">
     <div class="header-body">
         <a href="#" data-bs-toggle="modal" data-bs-target="#carrinhomodal">
             <img src="_icones/cart.png">
@@ -27,7 +27,7 @@
                 <select name="" id="pesq-categoria" class="header-search-select">
                     <option value="TUDO">TUDO</option>
                 </select>
-                <input type="text" name="" id="input-pesquisar" class="header-search-input" placeholder="Pesquisa aqui" >
+                <input type="text" name="" id="input-pesquisar" class="header-search-input" placeholder="Pesquisa aqui" autocomplete="off">
                 <div class="header-search-buttom" onclick="pesquisar()">
                     <img src="_icones/search.png" alt="">
                 </div>
@@ -62,7 +62,7 @@
 </style>
 
 <!-- CARRINHO -->
-<div class="modal fade" id="carrinhomodal" tabindex="-1" aria-labelledby="carrinhomodalLabel" aria-hidden="true">
+<div class="modal fade" id="carrinhomodal" tabindex="-1" aria-labelledby="carrinhomodalLabel" aria-hidden="true" style="z-index:9999 !important">
   <div class="modal-dialog modal-dialog-scrollable modal-lg">
     <div class="modal-content">
 
@@ -92,7 +92,7 @@
 </div>
 
 <!-- PESQUISA -->
-<div class="modal fade" id="pesquisamodal" tabindex="-1" aria-labelledby="pesquisamodalLabel" aria-hidden="true">
+<div class="modal fade" id="pesquisamodal" tabindex="-1" aria-labelledby="pesquisamodalLabel" aria-hidden="true" style="z-index:9999 !important">
   <div class="modal-dialog modal-dialog-scrollable modal-lg">
     <div class="modal-content">
       <div class="modal-body">

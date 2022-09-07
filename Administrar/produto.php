@@ -12,10 +12,10 @@ if(isset($_POST['acao']) and $_POST['acao'] == "editar"){
     $stock = Funcoes::EspacoPorTraco($_POST['stock']);
     $categoria = Funcoes::EspacoPorTraco($_POST['categoria']);
     $subcategoria = Funcoes::EspacoPorTraco($_POST['subcategoria']);
-    $nome = Funcoes::EspacoPorTraco($_POST['nome']);
+    $nome = $_POST['nome'];
     $preco = Funcoes::EspacoPorTraco($_POST['preco']);
     $qtd = Funcoes::EspacoPorTraco($_POST['qtd']);
-    $descricao = Funcoes::EspacoPorTraco($_POST['descricao']);
+    $descricao = $_POST['descricao'];
     $imagem = Funcoes::EspacoPorTraco($_POST['img']);
 
     $apagar='';
@@ -193,7 +193,7 @@ if (isset($_SESSION['yetu-debliw'])) {
                     <img src="../prod/<?php echo $resProduto['img'] ?>" style="width:200px;border:1px solid #eaeaea">
                     <input type="file" id="imagem" name="imagem" class="form-control">
 <br>
-                    <textarea name="descricao" maxlength="225" placeholder="Descrição do produto" class="form-control"  required="required"><?php echo $resProduto['descricao'] ?></textarea>
+                    <textarea name="descricao" maxlength="221" placeholder="Descrição do produto" class="form-control"  required="required"><?php echo $resProduto['descricao'] ?></textarea>
                     <br>
                     <button type="submit" class="btn btn-primary form-control" style="width:100% !important;" name="acao" value="editar">ATUALIZAR PRODUTO</button>
                 </form>

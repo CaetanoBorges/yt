@@ -79,6 +79,7 @@
             var telefone = $("#telefone-user").val();
             var pass = $("#pass-user").val();
             if(maior(nome, 6) && maior(rua, 4) && maior(bairro, 4) && maior(email, 6) && maior(telefone, 8) && maior(pass,6)){
+                loader("_icones/preloader.gif");
                 $.post("_API/Conta/cadastrar.php",{json: JSON.stringify({nome: nome, rua: rua, bairro: bairro, email: email, telefone: telefone, palavra_passe: pass})}).done(function(dados){
                     console.log(dados);
                     var obj = JSON.parse(dados);
@@ -91,6 +92,8 @@
                     }else{
                         notificacao(obj.payload);
                     }
+                }).always(function(a){
+                    loader("_icones/preloader.gif");
                 })
             }else{
                 notificacao("Precisa preencher os campos corretamente!");

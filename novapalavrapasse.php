@@ -30,7 +30,7 @@
             <div class="cliente-form">
                 <div>
                     <p>Palavra passe</p>
-                    <input type="password">
+                    <input type="password" id="palavra">
                 </div>
                 <img src="_icones/btn-recuperar.png" class="btn-recuperar">
             </div>
@@ -43,10 +43,24 @@
     ?>
 
     <?php include("_partes/script.php") ?>
-
-    
      <script>
-       
+        $(".btn-recuperar").click(function(){
+            loader("_icones/preloader.gif");
+            var email = localStorage.getItem("email");
+            var numero = localStorage.getItem("numero");
+            var pass = $("#palavra").val();
+            $.post("_API/Conta/novapasse.php",{email: email, numero: numero,palavra_passe: pass}).done(function(dados){
+                    console.log(dados);
+                    var obj = JSON.parse(dados);
+                    if(obj.ok){ 
+                        location.href="conta.php";
+                    }else{
+                        notificacao(obj.payload);
+                    }
+            }).always(function(a){
+                loader("_icones/preloader.gif");
+            })
+        })
      </script>
 </body>
 </html>

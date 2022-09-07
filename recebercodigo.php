@@ -30,7 +30,7 @@
             <div class="cliente-form">
                 <div>
                     <p>Email</p>
-                    <input type="email">
+                    <input type="email" id="email">
                 </div>
                 <img src="_icones/receber-codigo.png" class="btn-receber" style="cursor: pointer;">
             </div>
@@ -45,8 +45,19 @@
     <?php include("_partes/script.php") ?>
      <script>
         $(".btn-receber").click(function(){
-            $.post("_API/Conta/cadastrar.php",).done(function(data){
-                
+            loader("_icones/preloader.gif");
+            var email = $("#email").val();
+            $.post("_API/Conta/recuperar.php",{email: email}).done(function(dados){
+                    console.log(dados);
+                    var obj = JSON.parse(dados);
+                    if(obj.ok){ 
+                        localStorage.setItem("email",email);
+                        location.href="validarcodigo.php";
+                    }else{
+                        notificacao(obj.payload);
+                    }
+            }).always(function(a){
+                loader("_icones/preloader.gif");
             })
         })
      </script>

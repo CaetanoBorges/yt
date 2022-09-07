@@ -54,6 +54,12 @@ function permissaoNotificacao() {
     res.then(function(e) {
         if (e == "granted") {
             swRegistration.showNotification("Já tem as notificações ativadas", { body: "Muito bem", icon: "_icones/ico.png" });
+            tbUser.getItem("notificacao").then(function(not) {
+                if (not) {
+                    return;
+                }
+                registraNotificacao();
+            })
             return
         }
         notificacao("Precisa ativar as notificações com urgencia");
@@ -81,7 +87,15 @@ function registraNotificacao() {
 
             push = pushSubscription.toJSON();
             pushSubscribe = { endpoint: push.endpoint, auth: push.keys.auth, p256dh: push.keys.p256dh }
-
+            tbUser.getItem("token").then(function(token) {
+                var user = '';
+                if (token) {
+                    user = token;
+                }
+                $.post("_API/push/add.php", { token: user, endpoint: push.endpoint, auth: push.keys.auth, pdh: push.keys.p256dh }).done(function(res) {
+                    tbUser.setItem("notificacao", true);
+                })
+            })
         });
 
 }

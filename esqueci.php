@@ -23,10 +23,9 @@
 
     <div class="yetu-body">
             <div class="cliente-form">
-            <img src="_icones/codigo-renovacao.png" class="user">
-                
-                <img src="_icones/btn-obter-codigo.png" class="btn-obter">
-                <img src="_icones/btn-tenho-codigo.png" class="btn-tenho">
+                <img src="_icones/codigo-renovacao.png" class="user">
+                <a href="recebercodigo.php"><img src="_icones/btn-obter-codigo.png" class="btn-obter"></a>
+                <a href="validarcodigo.php"><img src="_icones/btn-tenho-codigo.png" class="btn-tenho"></a>
             </div>
         <br><br><br><br> <br><br><br>
     </div>

@@ -23,7 +23,7 @@ function dataehora() {
 }
 
 //FUNÇÃO QUE NOTIFICA AÇÕES NOS ITENS DO CARRINHO
-function notificacao(sms, tipo = 1) {
+function notificacao(sms, tipo = 3) {
 
     //tipo = 1 -> Adicionou um
     //tipo = 2 -> Removeu um
@@ -35,6 +35,7 @@ function notificacao(sms, tipo = 1) {
     var p = document.createElement("p");
     p.style.textAlign = "center";
     p.style.fontWeight = "bold";
+    p.style.fontSize = "30px";
     p.innerText = sms;
     div.append(p);
     div.setAttribute("id", id);
@@ -42,7 +43,7 @@ function notificacao(sms, tipo = 1) {
     divStyle.zIndex = 9999;
     divStyle.position = "fixed";
 
-    divStyle.width = "25%";
+    divStyle.width = "50%";
     divStyle.padding = "10px";
     div.style.background = "white";
     divStyle.border = "1px solid";
@@ -60,7 +61,7 @@ function notificacao(sms, tipo = 1) {
 
 
     document.querySelector("body").prepend(div);
-    $("#" + id).animate({ "top": "40vh", "left": "37.5%" }, function() {
+    $("#" + id).animate({ "top": "40vh", "left": "25%" }, function() {
         setTimeout(function() {
             $("#" + id).animate({ "top": "-40vh", "left": "120%" })
         }, 2000)
@@ -92,7 +93,7 @@ function timeStampToDate(time) {
     let unix_timestamp = time;
     var date = new Date(unix_timestamp * 1000);
 
-    return date.getDay() + "-" + date.getMonth() + "-" + date.getFullYear() + " " + date.getHours() + "h:" + date.getMinutes() + "s";
+    return date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear() + " " + date.getHours() + "h:" + date.getMinutes() + "s";
 }
 
 

@@ -8,7 +8,7 @@
          var color = "#ff0000";
          var confirmado = "Não";
          var detalhes = "btn-detalhes-red.png";
-         if (res.confirmado) {
+         if (res.confirmado == 1) {
              color = "#00ff00";
              confirmado = "Sim";
              detalhes = "btn-detalhes.png";
@@ -18,7 +18,7 @@
          var total = formatNum(Number(res.total));
 
          var itens = '';
-         var item = res.itens;
+         var item = JSON.parse(res.itens);
          var itensDaFatura = (item).length;
          var data = timeStampToDate(res.timestamp);
 

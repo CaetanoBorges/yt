@@ -1,5 +1,8 @@
 function getSugestoes() {
-    $.get("sugestoes.json").done(function(dados) {
+    $.get("_API/dados/sugestoes.php").done(function(dado) {
+
+        let dad = JSON.parse(dado);
+        let dados = JSON.parse(dad.payload);
         dados.forEach(el => {
             tbSugestoes.setItem(el['id'], el);
         });
@@ -16,12 +19,13 @@ function getSugestoes() {
 
 function pegaSugestoes() {
 
-    fetch('sugestoes.json')
+    fetch('_API/dados/sugestoes.php')
         .then(function(response) {
 
             return response.json();
         })
-        .then(function(json) {
+        .then(function(jso) {
+            let json = JSON.parse(jso.payload);
             json.forEach(el => {
                 tbSugestoes.setItem(el['id'], el);
             });
@@ -29,44 +33,31 @@ function pegaSugestoes() {
 
 }
 //--------------
-async function getUser() {
-    $.get("user.json").done(function(dados) {
-        tbUser.setItem("dados", dados);
-    }).fail(function(e) {
-        return false;
-    });
-    return true;;
-}
 
-function pegaUser() {
-    fetch('user.json')
+function pegaUser(token) {
+
+    fetch('_API/Conta/Dados/dados.php?' + new URLSearchParams({
+            token: token
+        }))
         .then(function(response) {
             return response.json();
         })
         .then(function(dados) {
-            tbUser.setItem("dados", dados);
+            let d = JSON.parse(dados.payload);
+            tbUser.setItem("dados", { nome: d.nome, rua: d.rua, bairro: d.bairro, email: d.email, telefone: d.telefone });
         });
 }
-//------------------
-async function getCompras() {
-    $.get("compras.json").done(function(dados) {
 
-        dados.forEach((el, key) => {
-            tbCompras.setItem(key, el);
-        });
-    }).fail(function(e) {
-        return false;
-    });
-    return true;
-
-}
-
-function pegaCompras() {
-    fetch('compras.json')
+function pegaCompras(token) {
+    fetch('_API/dados/compras.php?' + new URLSearchParams({
+            token: token
+        }))
         .then(function(response) {
             return response.json();
         })
-        .then(function(json) {
+        .then(function(jso) {
+            let json = JSON.parse(jso.payload);
+            tbCompras.clear();
             json.forEach(el => {
                 tbCompras.setItem(el['id'], el);
             });
@@ -74,10 +65,12 @@ function pegaCompras() {
 }
 //-----------
 async function getCategorias() {
-    $.get("categorias.json").done(function(dados) {
-
-        dados.forEach((el, key) => {
-            tbCategorias.setItem(key, el);
+    $.get("_API/dados/categorias.php").done(function(dado) {
+        let dad = JSON.parse(dado);
+        let dados = JSON.parse(dad.payload);
+        tbCategorias.clear();
+        dados.forEach((el) => {
+            tbCategorias.setItem(el['id'], el);
         });
     }).fail(function(e) {
 
@@ -91,11 +84,13 @@ async function getCategorias() {
 }
 
 function pegaCategorias() {
-    fetch('categorias.json')
+    fetch('_API/dados/categorias.php')
         .then(function(response) {
             return response.json();
         })
-        .then(function(json) {
+        .then(function(jso) {
+            let json = JSON.parse(jso.payload);
+            tbCategorias.clear();
             json.forEach(el => {
                 tbCategorias.setItem(el['id'], el);
             });
@@ -103,8 +98,11 @@ function pegaCategorias() {
 }
 //------------------------
 async function getSlide() {
-    $.get("slide.json").done(function(dados) {
+    $.get("_API/dados/slides.php").done(function(dado) {
 
+        let dad = JSON.parse(dado);
+        let dados = JSON.parse(dad.payload);
+        tbSlide.clear();
         dados.forEach((el, key) => {
             tbSlide.setItem(key, el);
         });
@@ -120,11 +118,13 @@ async function getSlide() {
 }
 
 function pegaSlide() {
-    fetch('slide.json')
+    fetch('_API/dados/slides.php')
         .then(function(response) {
             return response.json();
         })
-        .then(function(json) {
+        .then(function(jso) {
+            let json = JSON.parse(jso.payload);
+            tbSlide.clear();
             json.forEach(el => {
                 tbSlide.setItem(el['id'], el);
             });
@@ -132,7 +132,10 @@ function pegaSlide() {
 }
 //----------
 async function getProdutos() {
-    $.get("produtos.json").done(function(dados) {
+    $.get("_API/dados/produtos.php").done(function(dado) {
+        let dad = JSON.parse(dado);
+        let dados = JSON.parse(dad.payload);
+        tbProduto.clear();
         dados.forEach(el => {
             tbProduto.setItem(el['id'], el);
 
@@ -149,11 +152,13 @@ async function getProdutos() {
 }
 
 function pegaProdutos() {
-    fetch('produtos.json')
+    fetch('_API/dados/produtos.php')
         .then(function(response) {
             return response.json();
         })
-        .then(function(json) {
+        .then(function(jso) {
+            let json = JSON.parse(jso.payload);
+            tbProduto.clear();
             json.forEach(el => {
                 tbProduto.setItem(el['id'], el);
             });

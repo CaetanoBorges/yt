@@ -16,6 +16,10 @@ function irMinhasCompras() {
 function irComprar() {
     tbUser.getItem("dados").then(function(res) {
         if (res) {
+
+            $.post("_API/pedido/numero.php", { numero: res.telefone }).done(function(dados) {
+
+            })
             location.href = "comprar.php";
             return
         }

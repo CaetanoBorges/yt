@@ -1,9 +1,9 @@
 <?php
 
-use ContaAPI\Classes\Criptografia;
-use ContaAPI\Classes\Funcoes;
+use Conta\Classes\Criptografia;
+use Conta\Classes\Funcoes;
 
-require '../../vendor/autoload.php';
+require '../vendor/autoload.php';
 
 if(isset($_GET['token'])){
     
@@ -17,11 +17,11 @@ if(isset($_GET['token'])){
 
         $acesso = $funcoes::valid($TOKEN);
       
-        $query = $conexao->prepare("SELECT * FROM historicopalavrapasse WHERE chave_user = ?");
+        $query = $conexao->prepare("SELECT * FROM pedidos WHERE chave_user = ?");
         $query->bindValue(1, $acesso['user']);
         $query->execute();
         $re = $query->fetchAll();
-        rsort($re);
+
         $return['payload'] = json_encode($re);
         $return['ok'] = true;
 

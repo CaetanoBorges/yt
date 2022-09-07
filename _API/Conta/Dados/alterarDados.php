@@ -1,6 +1,6 @@
 <?php
-use ContaAPI\Classes\Criptografia;
-use ContaAPI\Classes\Funcoes;
+use Conta\Classes\Criptografia;
+use Conta\Classes\Funcoes;
 
 require '../../vendor/autoload.php';
 
@@ -16,15 +16,16 @@ if(isset($_POST['token'])){
 
         $acesso = $funcoes::valid($TOKEN);
 
-        $query = $conexao->prepare("UPDATE conta SET genero = ?, dia_nascimento = ?, mes_nascimento = ?, ano_nascimento = ? WHERE chave = ?");
-        $query->bindValue(1, $_POST['genero']);
-        $query->bindValue(2, $_POST['dia']);
-        $query->bindValue(3, $_POST['mes']);
-        $query->bindValue(4, $_POST['ano']);
-        $query->bindValue(5, $acesso['user']);
+        $query = $conexao->prepare("UPDATE usuario SET nome=?, email =?, telefone = ?, bairro = ?, rua = ? WHERE id = ?");
+        $query->bindValue(1, $_POST['nome']);
+        $query->bindValue(2, $_POST['email']);
+        $query->bindValue(3, $_POST['telefone']);
+        $query->bindValue(4, $_POST['rua']);
+        $query->bindValue(5, $_POST['bairro']);
+        $query->bindValue(6, $acesso['user']);
         $query->execute();
 
-        $return['payload'] = "Alterou o genero e o nascimento";
+        $return['payload'] = "Atualizou os dados";
         $return['ok'] = true;
 
         echo json_encode($return);
