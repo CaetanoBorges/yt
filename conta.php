@@ -63,7 +63,7 @@
 
         </div>
         <br><br><br><br><br><br><br>
-        <div class="modal fade" id="editarmodal" tabindex="-1" aria-labelledby="editarmodalLabel" aria-hidden="true">
+        <div class="modal fade" id="editarmodal" tabindex="-1" aria-labelledby="editarmodalLabel" aria-hidden="true" style="z-index:9999 !important">
             <div class="modal-dialog modal-dialog-scrollable modal-lg">
                 <div class="modal-content">
 

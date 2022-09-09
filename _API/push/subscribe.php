@@ -61,7 +61,10 @@ if(isset($_POST['user']) and !empty($_POST['user'])){
         exit();
     }
     else {
-        
+        $conexao = Funcoes::conexao();
+        $query = $conexao -> prepare("DELETE FROM push WHERE chave_user = ?");
+        $query->bindValue(1,$_GET['u']);
+        $query->execute();
         ?>
             <div style="display: block;margin:100px auto;width: 200px;font-size:30px">
                 O usuario desativou as notificações.<br>

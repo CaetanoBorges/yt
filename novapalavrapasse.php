@@ -53,7 +53,10 @@
                     console.log(dados);
                     var obj = JSON.parse(dados);
                     if(obj.ok){ 
-                        location.href="conta.php";
+                         pegaUser(obj.payload);
+                        tbUser.setItem("token", obj.payload).then(function(e){
+                            location.href = "conta.php";
+                        })
                     }else{
                         notificacao(obj.payload);
                     }

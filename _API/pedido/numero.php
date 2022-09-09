@@ -1,5 +1,5 @@
 <?php
-
+use PHPMailer\PHPMailer\PHPMailer;
 use Conta\Classes\Funcoes;
 
 require '../vendor/autoload.php';
@@ -19,7 +19,14 @@ if(isset($_POST['numero']) and !empty($_POST['numero'])){
         $query->bindValue(2,$_POST['numero']);
         $query->bindValue(3,$_POST['email']);
         $query->execute();
-
+        $mailer = new PHPMailer(true);
+        $corp = file_get_contents("../Conta/emailTemplates/confirmarPedido.html");
+        $corpo=str_replace("--NUMERO--",$digitos,$corp);
+        $enviar = Funcoes::enviaEmail($mailer, $_POST['email'], "Confirmar pedido-YETU. ( ".$digitos." )", $corpo);
+        
+        $return['payload'] = "Certo";
+        $return['ok'] = true;
+        echo json_encode($return);
         return;
     }
 
@@ -28,5 +35,12 @@ if(isset($_POST['numero']) and !empty($_POST['numero'])){
     $query->bindValue(2,$_POST['numero']);
     $query->bindValue(3,$digitos);
     $query->execute();
+    $mailer = new PHPMailer(true);
+    $corp = file_get_contents("../Conta/emailTemplates/confirmarPedido.html");
+    $corpo=str_replace("--NUMERO--",$digitos,$corp);
+    $enviar = Funcoes::enviaEmail($mailer, $_POST['email'], "Confirmar pedido-YETU. ( ".$digitos." )", $corpo);
 
+    $return['payload'] = "Certo";
+    $return['ok'] = true;
+    echo json_encode($return);
 }

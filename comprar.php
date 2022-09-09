@@ -64,6 +64,7 @@
     
      <script>
         function fazerPedido(){
+            loader("_icones/preloader.gif");
             var carrinho = [];
 
                 tbCarrinho.iterate(function(res,key,iterator){
@@ -72,8 +73,21 @@
                     tbUser.getItem("dados").then(function(user){
                         console.log(carrinho, user);
                         $.post("_API/pedido/numero.php",{numero: user.telefone, email: user.email}).done(function(response){
-                            
-                            location.href = "comprar.php";
+                            console.log(response);
+                            var obj = '';
+                            try {
+                                obj = JSON.parse(response);
+                            }
+                            catch(err) {
+                                loader("_icones/preloader.gif");
+                                notificacao("Ocorreu algum erro, repita por favor");
+                            }
+                            if(obj.ok){
+                                //location.href = "comprar.php";
+                                loader("_icones/preloader.gif");
+                                notificacao("Número de confirmação enviado");
+                            }
+                            //location.href = "comprar.php";
                         })
                         
                     })
@@ -88,7 +102,7 @@
                 return
             }
             var carrinho = [];
-
+            loader("_icones/preloader.gif");
             tbCarrinho.iterate(function(res,key,iterator){
                 carrinho.push(res);
             }).then(function(){
@@ -102,7 +116,14 @@
                         }
                         $.post("_API/pedido/confirmar.php",{token:user,numero: numero, user: use, carrinho: carrinho}).done(function(response){
                             console.log(response);
-                            var obj = JSON.parse(response)
+                            var obj = '';
+                            try {
+                                obj = JSON.parse(response);
+                            }
+                            catch(err) {
+                                loader("_icones/preloader.gif");
+                                notificacao("Ocorreu algum erro, repita por favor");
+                            }
                             if(obj.ok){
                                 tbCarrinho.clear();
                                 location.href = "acaminho.php";

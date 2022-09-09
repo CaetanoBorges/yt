@@ -57,7 +57,7 @@ if (isset($_SESSION['yetu-debliw'])) {
                     <div class="card card-body">
                     <?php
                     foreach($res as $key => $value){ ?>
-                        <div  style="background: none;">
+                        <div  style="background: none;border-bottom:1px solid red;padding-bottom:20px">
                             <h3 style="cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#collapseExample<?php echo $key ?>" aria-expanded="false" aria-controls="collapseExample<?php echo $key ?>"><?php echo $value['nome'] ?></h3>
                             <div class="collapse" id="collapseExample<?php echo $key ?>">
                                 <p>Telefone: <b><?php echo $value['telefone'] ?></b></p>
@@ -65,10 +65,16 @@ if (isset($_SESSION['yetu-debliw'])) {
                                 <p>Bairro: <b><?php echo $value['bairro'] ?></b></p>
                                 <p>Rua: <b><?php echo $value['rua'] ?></b></p>
                                 <hr>
-                                    <a href="notificar.php?u=<?php echo $value['id'] ?>" class="btn btn-primary" >NOTIFICAR</a>
+                                    <a data-bs-toggle="collapse" data-bs-target="#collapseExample<?php echo $value['id'] ?>" aria-expanded="false" aria-controls="collapseExample<?php echo $value['id'] ?>" class="btn btn-primary" >NOTIFICAR</a>
                                     <a href="compras.php?u=<?php echo $value['id'] ?>" class="btn btn-success" >COMPRAS</a>
+
+                                    <div class="collapse card card-body" id="collapseExample<?php echo $value['id'] ?>">
+                                        <a href="notificar.php?u=<?php echo $value['id'] ?>" class="btn btn-info" >PUSH</a>
+                                        <a href="sms.php?u=<?php echo $value['id'] ?>" class="btn btn-warning" >SMS</a>
+                                        <a href="email.php?u=<?php echo $value['id'] ?>" class="btn btn-success" >EMAIL</a>
+                                    </div>
                             </div>
-                        </div>
+                        </div><br>
                     <?php }
                 ?>
                 </div>

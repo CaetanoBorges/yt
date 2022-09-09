@@ -160,9 +160,11 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    z-index: 9998;
 }
 
 .header-bottom li {
+    line-height: 39px;
     display: inline-flex;
     align-items: center;
 }

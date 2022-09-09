@@ -1,24 +1,58 @@
 <?php
 namespace Conta;
+use PHPMailer\PHPMailer\PHPMailer;
 use Conta\Classes\Funcoes;
 session_start();
 
 require '../_API/vendor/autoload.php';
 
 
-    $conexao = Funcoes::conexao();
+$conexao = Funcoes::conexao();
 if(isset($_POST['id']) and !empty($_POST['id'])){
 
     $id=$_POST['id'];
-    $user=$_POST['user'];
 
-    $query = $conexao -> prepare("UPDATE pedidos SET confirmado = ? WHERE id = ? AND chave_user = ?");
+    $query = $conexao -> prepare("UPDATE pedidos SET confirmado = ? WHERE id = ?");
     $query->bindValue(1,true);
     $query->bindValue(2,$id);
-    $query->bindValue(3,$user);
     
     if( $query->execute() ){
-        header('Location: compras.php?u='.$user);
+
+
+        $query = $conexao -> prepare("SELECT * FROM pedidos WHERE id = ? ");
+        $query->bindValue(1,$id);
+        $query->execute();
+        $resPedido = $query->fetch();
+
+        $res = (array) json_decode($resPedido['extra']);
+
+        $datetimeFormat = 'd-m-Y H:i:s';
+        $date = new \DateTime('now', new \DateTimeZone('Africa/Luanda'));
+        $date->setTimestamp($resPedido['timestamp']);
+        $data = $date->format($datetimeFormat);
+        $itens=json_decode($resPedido['itens']);
+        $qtdItens = count($itens)." item(s)";
+        $produtos = '';
+        foreach($itens as $key => $v){ 
+            $v = (array) $v;
+            $produtos.='<div style="width: 100%;display:block;position:relative;">'
+                .'<p stayle="margin:0;font-size:14px;">Nome: <b>'. $v['nome'] .'</b></p>'
+                .'<p stayle="margin:0;font-size:14px;">Preco: <b>'.number_format($v['preco'], 0, '', ' ') .' kz</b></p>'
+                .'<p stayle="margin:0;font-size:14px;">Quantidade: <b>'. $v['qtd'] .'</b></p>'
+                .'<p stayle="margin:0;font-size:14px;">Total: <b>'. number_format($v['total'], 0, '', ' ') .' kz</b></p>'
+            .'</div>'
+            .'<hr>';
+         }
+
+        $mailer = new PHPMailer(true);
+        $corpo = file_get_contents("../_API/Conta/emailTemplates/pedidoConfirmado.html");
+        $corpo=str_replace("--TOTAL--",number_format($resPedido['total'], 0, '', ' ')." kz",$corpo);
+        $corpo=str_replace("--DATA--",$data,$corpo);
+        $corpo=str_replace("--ITENS--",$qtdItens,$corpo);
+        $corpo=str_replace("--PRODUTOS--",$produtos,$corpo);
+        $enviar = Funcoes::enviaEmail($mailer, $res['email'], "Pedido Confirmado - YETU | ".$data, $corpo);
+
+        header('Location: pedidos.php');
         exit();
     }
     
@@ -42,7 +76,7 @@ if (isset($_SESSION['yetu-debliw'])) {
         <link rel="stylesheet" href="../_arq/bootstrap.min.css">
         <script src="../_arq/bootstrap.min.js"></script>
         <link rel="stylesheet" href="_arq/one.css">
-        <title>Compras</title>
+        <title>Pedidos</title>
     </head>
     <style>
     .principal-corpo{width: 90%;display: block;padding: 5%;background-color: #ddd;}
@@ -63,14 +97,12 @@ if (isset($_SESSION['yetu-debliw'])) {
                     <div class="card card-body">
                     <?php
                     foreach($resPedidos as $key => $value){ 
-                        $query = $conexao -> prepare("SELECT * FROM usuario WHERE id = ?");
-                        $query->bindValue(1,$value['chave_user']);
-                        $query->execute();
-                        $resUser = $query->fetch();
+                        $resUser = (array) json_decode($value['extra']);
                         ?>
                         <div  style="background: none;">
                             <h3 style="cursor: pointer;padding:10px;color:black;background:red;border-radius:7px;" data-bs-toggle="collapse" data-bs-target="#collapseExample<?php echo $key ?>" aria-expanded="false" aria-controls="collapseExample<?php echo $key ?>"><?php echo number_format($value['total'], 0, '', ' '); ?> kz</h3>
-                            <div class="card card-body">
+                            <h6 style="cursor: pointer;padding:5px;color:white;background:green;border-radius:3px;" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $key ?>" aria-expanded="false" aria-controls="collapse<?php echo $key ?>">DETALHES DO CLIENTE</h6>
+                            <div class="collapse card card-body" id="collapse<?php echo $key ?>">
                                 <p class="item">Nome: <b><?php echo $resUser['nome'] ?></b></p>
                                 <p class="item">Telefone: <b><?php echo $resUser['telefone'] ?></b></p>
                                 <p class="item">Email: <b><?php echo $resUser['email'] ?></b></p>
@@ -105,15 +137,14 @@ if (isset($_SESSION['yetu-debliw'])) {
                                     if($value['confirmado']){?>
                                         <p class="btn btn-success" >CONFIRMADO</p>
                                     <?php }else{?>
-                                        <form action="compras.php" method="post">
+                                        <form action="pedidos.php" method="post">
                                             <input type="hidden" name="id" value="<?php echo $value['id'] ?>">
-                                            <input type="hidden" name="user" value="<?php echo $value['chave_user'] ?>">
-                                            <button type="button" class="btn btn-danger form-control" style="width:100% !important;"  data-bs-toggle="collapse" data-bs-target="#collapseExample<?php echo $value['id'] ?>" aria-expanded="false" aria-controls="collapseExample<?php echo $value['id'] ?>">CONFIRMAR</button>
+                                            <button type="button" class="btn btn-danger form-control" style="width:100% !important;"  data-bs-toggle="collapse" data-bs-target="#collapseExamplee<?php echo $value['id'] ?>" aria-expanded="false" aria-controls="collapseExamplee<?php echo $value['id'] ?>">CONFIRMAR</button>
                                           
-                                            <div class="collapse" id="collapseExample<?php echo $value['id'] ?>">
+                                            <div class="collapse" id="collapseExamplee<?php echo $value['id'] ?>">
                                                     <div class="card card-body">
                                                         <button type="submit" class="btn btn-danger">CONFIRMAR MESMO</button>
-                                                        <button type="button" class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#collapseExample<?php echo $value['id'] ?>" aria-expanded="false" aria-controls="collapseExample<?php echo $value['id'] ?>">NÃO</button>
+                                                        <button type="button" class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#collapseExamplee<?php echo $value['id'] ?>" aria-expanded="false" aria-controls="collapseExamplee<?php echo $value['id'] ?>">NÃO</button>
                                                     </div>
                                             </div>
 

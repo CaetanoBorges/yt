@@ -29,7 +29,7 @@ if (isset($_SESSION['yetu-debliw'])) {
         <link rel="stylesheet" href="../_arq/bootstrap.min.css">
         <script src="../_arq/bootstrap.min.js"></script>
         <link rel="stylesheet" href="_arq/one.css">
-        <title>Sugestão</title>
+        <title>Push</title>
     </head>
     <style>
     .principal-corpo{width: 90%;display: block;padding: 5%;background-color: #ddd;}
