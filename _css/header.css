@@ -172,3 +172,23 @@
 .header-bottom li:hover {
     text-shadow: 2px 2px 5px red;
 }
+
+@media screen and (max-width:1000px) {
+    .header-body {
+        width: 100%
+    }
+    .header-bottom {
+        display: none;
+    }
+    .header-top {
+        display: none;
+    }
+    .header-search {
+        width: 70%;
+        margin: -83px 0 0px 15%;
+    }
+    .header-middle-logo {
+        width: 166px;
+        display: block;
+    }
+}

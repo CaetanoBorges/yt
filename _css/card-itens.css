@@ -75,3 +75,12 @@
     border-left: 1px solid #000;
     cursor: pointer;
 }
+
+@media screen and (max-width:1000px) {
+    .card-itens-produto {
+        display: grid;
+        grid-template-columns: 44% 44%;
+        row-gap: 7%;
+        column-gap: 12%;
+    }
+}

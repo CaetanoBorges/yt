@@ -20,6 +20,16 @@
     position: relative;
 }
 
+@media screen and (max-width:1000px) {
+    * {
+        font-size: 14px;
+    }
+    .yetu-body {
+        width: 90%;
+        padding: 0 5%;
+    }
+}
+
 
 /* 
 ::-webkit-scrollbar-track {}

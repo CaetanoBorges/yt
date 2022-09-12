@@ -30,3 +30,10 @@
     left: 0;
     cursor: pointer;
 }
+
+@media screen and (max-width:1000px) {
+    .pes-body {
+        width: 90%;
+        padding: 0 5%;
+    }
+}
