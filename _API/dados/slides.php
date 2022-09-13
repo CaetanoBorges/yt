@@ -9,7 +9,7 @@ $funcoes = new Funcoes();
 $conexao = $funcoes::conexao();
 
       
-$query = $conexao->prepare("SELECT * FROM produto WHERE slide != NULL");
+$query = $conexao->prepare("SELECT * FROM produto WHERE slide != ''");
 $query->execute();
 $re = $query->fetchAll();
 

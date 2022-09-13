@@ -99,7 +99,6 @@ function pegaCategorias() {
 //------------------------
 async function getSlide() {
     $.get("_API/dados/slides.php").done(function(dado) {
-
         let dad = JSON.parse(dado);
         let dados = JSON.parse(dad.payload);
         tbSlide.clear();

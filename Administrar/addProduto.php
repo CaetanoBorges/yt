@@ -13,10 +13,10 @@ if(isset($_POST['nome'])){
     $stock = Funcoes::EspacoPorTraco($_POST['stock']);
     $categoria = Funcoes::EspacoPorTraco($_POST['categoria']);
     $subcategoria = Funcoes::EspacoPorTraco($_POST['subcategoria']);
-    $nome = Funcoes::EspacoPorTraco($_POST['nome']);
+    $nome = $_POST['nome'];
     $preco = Funcoes::EspacoPorTraco($_POST['preco']);
     $qtd = Funcoes::EspacoPorTraco($_POST['qtd']);
-    $descricao = Funcoes::EspacoPorTraco($_POST['descricao']);
+    $descricao = $_POST['descricao'];
 
     $cap=$_FILES['imagem']['name'];
     $imagem=time()."-".Funcoes::EspacoPorTraco($cap);

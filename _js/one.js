@@ -61,7 +61,7 @@ function notificacao(sms, tipo = 3) {
 
 
     document.querySelector("body").prepend(div);
-    $("#" + id).animate({ "top": "40vh", "left": "25%" }, function() {
+    $("#" + id).animate({ "top": "40vh", "left": "23%" }, function() {
         setTimeout(function() {
             $("#" + id).animate({ "top": "-40vh", "left": "120%" })
         }, 2000)

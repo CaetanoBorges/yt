@@ -1,4 +1,4 @@
-<div class="clearfix" style="width:100%;position:relative;margin-bottom:100px">
+<div class="clearfix slide-um-clear">
 
             <img src="_icones/circle-left.png" id="prev-slide-um" class="circle-left slide-controls">
             <img src="_icones/circle-right.png" id="next-slide-um" class="circle-right slide-controls">

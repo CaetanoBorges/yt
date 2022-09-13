@@ -13,6 +13,7 @@ body {
     width: 500px;
     margin: 200px auto 200px auto;
     display: block;
+    padding: 0 auto 200px auto;
 }
 
 .principal .titulo {

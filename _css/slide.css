@@ -73,3 +73,14 @@
 .slide-element .img-prod {
     width: 100%;
 }
+
+@media screen and (max-width: 1000px) {
+    .slide-element .action-assert {
+        bottom: 0;
+        color: white;
+        text-shadow: 1px 0px 1px black;
+    }
+    .slide-element .action {
+        background: #ff0000;
+    }
+}

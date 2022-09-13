@@ -1,4 +1,4 @@
-<div class="clearfix" style="width:100%;position:relative;margin:100px 0">
+<div class="clearfix slide-sugestao-clear">
 
 
             <ul id="yetu-slide-sugestao" class="gallery list-unstyled cS-hidden">

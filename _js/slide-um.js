@@ -12,7 +12,7 @@
                             </div>
                         </div>
                         
-                        <img src="prod/${value.img}" class="img-prod">
+                        <img src="prod/${value.slide}" class="img-prod">
                     </div>
                 </li>`)
 

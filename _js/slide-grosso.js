@@ -29,9 +29,13 @@
 
   setTimeout(function() {
       $(document).ready(function() {
+          var ite = 2;
+          if (window.screen.availWidth < 1000) {
+              ite = 1;
+          } else {}
           var slider = $('#yetu-slide-grosso').lightSlider({
               gallery: false,
-              item: 2,
+              item: ite,
               speed: 800,
               loop: true,
               keyPress: true,

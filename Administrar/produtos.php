@@ -26,7 +26,8 @@ if (isset($_SESSION['yetu-debliw'])) {
         <title>Produtos</title>
     </head>
     <style>
-    .principal-corpo{width: 90%;display: block;padding: 5%;background-color: #ddd;}
+    .principal-corpo{width: 90%;display: block;background-color: #ddd;
+    padding: 0 5% 200px 5%;}
     .principal-corpo a{color:black;text-decoration: none;}
     .principal-corpo a:hover{color:red;}
     
