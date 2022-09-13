@@ -18,6 +18,12 @@
     .cliente-preco{float: right;font-size: 24px;}
 
     .btn-prosseguir{display: block;margin: 150px auto;width: 380px;cursor: pointer;}
+    @media screen and (max-width:1000px) {
+        .btn-prosseguir{width: 90%;display: block;margin: 20px auto;}
+        p.itens{font-size: 20px;clear: both;}
+        p.total{font-size: 20px;clear: both;}
+        .cliente-preco{float: none;line-height: 21px;margin-bottom: 20px;}
+    }
 </style>
 <body>
     <?php

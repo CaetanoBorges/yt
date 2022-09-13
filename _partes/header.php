@@ -17,7 +17,7 @@
     <div class="header-body">
         <a href="#" data-bs-toggle="modal" data-bs-target="#carrinhomodal">
             <img src="_icones/cart.png">
-            <p>Cesto</p>
+            <p class="cesto-label">Cesto</p>
             <div class="header-qtd-cesto"></div>
         </a>
         <img src="_icones/logo.png" class="header-middle-logo">
@@ -62,13 +62,13 @@
 </style>
 
 <!-- CARRINHO -->
-<div class="modal fade" id="carrinhomodal" tabindex="-1" aria-labelledby="carrinhomodalLabel" aria-hidden="true" style="z-index:9999 !important">
+<div class="modal fade" id="carrinhomodal" tabindex="-1" aria-labelledby="carrinhomodalLabel" aria-hidden="true" style="z-index:10001 !important">
   <div class="modal-dialog modal-dialog-scrollable modal-lg">
     <div class="modal-content">
 
       <div class="modal-header">
-        <h2 style="display:block;margin:0 auto;font-size:32px">CESTO</h2>
-        <!--<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+        <h2 class="cesto-label-dentro">CESTO</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
             <div class="cesto-top">
@@ -92,9 +92,12 @@
 </div>
 
 <!-- PESQUISA -->
-<div class="modal fade" id="pesquisamodal" tabindex="-1" aria-labelledby="pesquisamodalLabel" aria-hidden="true" style="z-index:9999 !important">
+<div class="modal fade" id="pesquisamodal" tabindex="-1" aria-labelledby="pesquisamodalLabel" aria-hidden="true" style="z-index:10001 !important">
   <div class="modal-dialog modal-dialog-scrollable modal-lg">
     <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
       <div class="modal-body">
         <br>
         <h3 id="pesquisa-qtd"></h3><br>
@@ -106,8 +109,16 @@
     </div>
   </div>
 </div>
+<div class="menu-mobile">
 
+        <debliwui-menu tip_background="#980000" tip_color="#fff">
+            <div slot="sms">
+
+            </div>
+        </debliwui-menu>
+    </div>
 <style>
+    .menu-mobile{display: none;}
     .pesquisa-res {
         display: grid;
         grid-template-columns: 47% 47%;
@@ -181,6 +192,13 @@
     }
 
     .link-pesquisa{color:black;text-decoration: none;}
+    @media screen and (max-width:1000px) {
+        .pesquisa-res {
+            display: inline-table;
+        }
+        .item .detalhes .preco-qtd .preco-total p{font-size: 29px;}
+        .menu-mobile{display: block;}
+    }
 </style>
 
 <script>
@@ -197,6 +215,7 @@
                 $("#pesquisa-qtd").html(result.length+" produto(s) encontrados");
                 
                 result.forEach(function(el){
+                    var preco = formatNum(Number(el.preco));
                     $(".pesquisa-res").append(`
                        <a href="p.php?${el.id}" class="link-pesquisa"> <div class="item">
                                 <img src="prod/${el.img}" class="img">
@@ -204,7 +223,7 @@
                                     <p class="nome">${el.nome}</p>
                                     <div class="preco-qtd">
                                         <div class="preco-total">
-                                            <img src="_icones/coins.png"> <p>${el.preco}</p>
+                                            <img src="_icones/coins.png"> <p>${preco}</p>
                                         </div>
                                     </div>
                                 </div>

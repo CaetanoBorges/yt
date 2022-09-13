@@ -13,7 +13,11 @@
     .btn-obter{display:block;width: 309px;cursor: pointer;margin: 10px 0 40px 0;}
     .btn-tenho{display:block;width: 309px;cursor: pointer;margin: 40px 0 100px 0;}
     .user{display: block;margin:0 auto 60px auto;}
-
+@media screen and (max-width:1000px) {
+        .user{width:70%}
+        .btn-obter{width: 70%;margin: 25px auto;display: block;}
+        .btn-tenho{width: 70%;margin: 25px auto;display: block;}
+    }
 </style>
 <body>
     <?php

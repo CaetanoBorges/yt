@@ -20,6 +20,11 @@
     .splash-body p{display: inline-block;font-size: 32px;text-transform: uppercase;margin:0}
     .splash-body span{display: inline-block}
     .splash-body span img{width: 47px;}
+    @media screen and (max-width:1000px) {
+            
+            .splash-body{width: 80%;padding: 10%;}
+
+        }
 </style>
 <div class="splash-container">
     <div class="splash-body">

@@ -63,13 +63,13 @@
 
         </div>
         <br><br><br><br><br><br><br>
-        <div class="modal fade" id="editarmodal" tabindex="-1" aria-labelledby="editarmodalLabel" aria-hidden="true" style="z-index:9999 !important">
+        <div class="modal fade" id="editarmodal" tabindex="-1" aria-labelledby="editarmodalLabel" aria-hidden="true" style="z-index:10001 !important">
             <div class="modal-dialog modal-dialog-scrollable modal-lg">
                 <div class="modal-content">
 
                 <div class="modal-header">
                     <h2 style="display:block;margin:0 auto;font-size:32px">Editar dados</h2>
-                    <!--<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="cliente-form">

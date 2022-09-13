@@ -14,17 +14,27 @@ function irMinhasCompras() {
 }
 
 function irComprar() {
-    tbUser.getItem("dados").then(function(res) {
-        if (res) {
+    tbCarrinho.length().then(function(numberOfKeys) {
 
-            $.post("_API/pedido/numero.php", { numero: res.telefone, email: res.email }).done(function(dados) {
+        if (numberOfKeys <= 0) {
+            notificacao("Não tem produto no cesto de compras");
+            return;
+        } else {
+            tbUser.getItem("dados").then(function(res) {
+                if (res) {
 
+                    $.post("_API/pedido/numero.php", { numero: res.telefone, email: res.email }).done(function(dados) {
+
+                    })
+                    location.href = "comprar.php";
+                    return
+                }
+                location.href = "n.php";
             })
-            location.href = "comprar.php";
-            return
         }
-        location.href = "n.php";
-    })
+    });
+
+
 
 }
 

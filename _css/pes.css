@@ -22,12 +22,12 @@
 
 .pes-content .img {
     position: absolute;
-    right: 0;
+    right: 10px;
 }
 
 .instalar {
     position: absolute;
-    left: 0;
+    left: 10px;
     cursor: pointer;
 }
 
@@ -35,5 +35,9 @@
     .pes-body {
         width: 90%;
         padding: 0 5%;
+    }
+    .instalar {
+        width: 50px;
+        left: 20px;
     }
 }

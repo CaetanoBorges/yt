@@ -76,9 +76,18 @@
     cursor: pointer;
 }
 
+.slide-item-wrapper {
+    padding: 0 10%
+}
+
 @media screen and (max-width:1000px) {
     .card-itens-produto {
         display: grid;
-        grid-template-columns: 44% 44%;
+        grid-template-columns: 47.5% 47.5%;
+        row-gap: 3%;
+        column-gap: 5%;
+    }
+    .slide-item-wrapper {
+        padding: 0 3%
     }
 }

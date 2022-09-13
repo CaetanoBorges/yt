@@ -11,10 +11,13 @@ tbSugestoes.iterate(function(value, key, iterationNumber) {
     `);
 }).then(function(e) {
     $(document).ready(function() {
-
+        var ite = 5;
+        if (window.screen.availWidth < 1000) {
+            ite = 3;
+        } else {}
         var slider = $('#yetu-slide-sugestao').lightSlider({
             gallery: false,
-            item: 5,
+            item: ite,
             speed: 600,
             loop: true,
             keyPress: true,

@@ -39,7 +39,7 @@
                     </div>
                     <div class="qtd-action">
                         <div class="menus" onclick="menosTelaProd()"> <img src="_icones/minus-circle.png"> </div>
-                        <div class="qtd qtd-tela-produto"> <input type="number" value="1"> </div>
+                        <div class="qtd qtd-tela-produto"> <input type="number" value="1" disabled="disabled"> </div>
                         <div class="mais" onclick="maisTelaProd()"> <img src="_icones/plus-circle.png"> </div>
                     </div>
                     <img src="_icones/por-cesto.png" class="por-action" >

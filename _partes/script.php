@@ -17,4 +17,5 @@
 <script src="_js/bin/carrinho.js"></script>
 <script src="_js/routes.js"></script>
 <script src="_js/swFunctions.js"></script>
+<script src="_arq/debliwui-menu.js"></script>
 <script src="sw.js"></script>

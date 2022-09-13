@@ -2,7 +2,7 @@ function slideCard(value, parent) {
     console.log(value);
     $('#yetu-slide-card').append(`
     <li>
-                    <div style="padding: 0 10%;">
+                    <div class="slide-item-wrapper">
                         <div class="prod-item">
                             <div class="img">
                                 <img src="prod/${value.img}">
@@ -38,9 +38,14 @@ tbProduto.getItem(produto).then((item) => {
 
 setTimeout(function() {
     $(document).ready(function() {
+
+        var ite = 3;
+        if (window.screen.availWidth < 1000) {
+            ite = 2;
+        } else {}
         var slider = $('#yetu-slide-card').lightSlider({
             gallery: false,
-            item: 3,
+            item: ite,
             speed: 800,
             loop: true,
             keyPress: true,

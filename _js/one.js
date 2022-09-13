@@ -40,7 +40,7 @@ function notificacao(sms, tipo = 3) {
     div.append(p);
     div.setAttribute("id", id);
     var divStyle = div.style;
-    divStyle.zIndex = 9999;
+    divStyle.zIndex = 99999;
     divStyle.position = "fixed";
 
     divStyle.width = "50%";

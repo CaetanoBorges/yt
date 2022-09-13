@@ -43,6 +43,18 @@
         font-size: 19px;
         padding: 5px;
         }
+        @media screen and (max-width:1000px) {
+            
+            .tabela-definicoes {
+                display: inline-table;
+            }
+            .bloco{
+                width:fit-content;
+                display: block;
+                margin: 0 auto;
+            }
+
+        }
 </style>
 <body>
     <?php

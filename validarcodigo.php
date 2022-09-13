@@ -17,7 +17,10 @@
     .btn-cadastrar{width: 309px;cursor: pointer;margin: 30px 0;}
     .esqueci{font-weight: bold;cursor: pointer;font-size: 24px;text-align: center;}
     .user{display: block;margin:100px auto 30px auto;width: 498px;}
-
+    @media screen and (max-width:1000px) {
+        .user{width:90%}
+        .btn-Validar{width: 70%;margin: 25px auto;display: block;}
+    }
 </style>
 <body>
     <?php

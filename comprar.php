@@ -23,6 +23,13 @@
     .nao-recebeu{font-size: 24px;color: #ff0000;margin: 40px 0 5px 0;}
     .para-receber{font-size: 24px;margin: 0;}
     .para-receber span{font-size: 30px;font-weight: bold;cursor: pointer;}
+    @media screen and (max-width:1000px) {
+        .btn-prosseguir{margin: 50px auto;width: 100%;}
+        .por-favor{font-size: 18px; margin:30px 0 50px 0}
+        .nao-recebeu{font-size: 18px;margin-top:10px}
+        .para-receber{font-size: 18px;}
+        #numero-confirmar{height: 30px;width: 50%;}
+    }
 </style>
 <body>
     <?php
@@ -31,7 +38,7 @@
 
 
     <div class="yetu-body">
-        <img src="_icones/cancelar.png" class="btn-cancelar">
+        <img src="_icones/cancelar.png" class="btn-cancelar" onclick="history.back()">
         <div class="cliente-form-preco">
             <div class="cliente-preco">
                 <p class="itens"></p>

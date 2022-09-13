@@ -17,6 +17,7 @@ if(isset($_POST['acao']) and $_POST['acao'] == "editar"){
     $qtd = Funcoes::EspacoPorTraco($_POST['qtd']);
     $descricao = $_POST['descricao'];
     $imagem = Funcoes::EspacoPorTraco($_POST['img']);
+    $id=$_POST['id'];
 
     $apagar='';
     $imagem_temp = '';
@@ -29,7 +30,7 @@ if(isset($_POST['acao']) and $_POST['acao'] == "editar"){
         $imagem_temp=$_FILES['imagem']['tmp_name'];
     }
 
-    $query = $conexao -> prepare("UPDATE produto SET nome = ?, categoria = ?, subcategoria = ?, stock = ? , qtd = ?, preco = ?, descricao = ?, img = ?");
+    $query = $conexao -> prepare("UPDATE produto SET nome = ?, categoria = ?, subcategoria = ?, stock = ? , qtd = ?, preco = ?, descricao = ?, img = ? WHERE id = ?");
     $query->bindValue(1,$nome);
     $query->bindValue(2,$categoria);
     $query->bindValue(3,$subcategoria);
@@ -38,6 +39,7 @@ if(isset($_POST['acao']) and $_POST['acao'] == "editar"){
     $query->bindValue(6,$preco);
     $query->bindValue(7,$descricao);
     $query->bindValue(8,$imagem);
+    $query->bindValue(9,$id);
     
     
     if( $query->execute() ){
@@ -57,13 +59,15 @@ if(isset($_POST['acao']) and $_POST['acao'] == "meterslide"){
 
     $stock = Funcoes::EspacoPorTraco($_POST['stock']);
     $apagar = $_POST['apagar'];
+    $id=$_POST['id'];
 
     $cap=$_FILES['imagem']['name'];
     $imagem=time()."-".Funcoes::EspacoPorTraco($cap);
     $imagem_temp=$_FILES['imagem']['tmp_name'];
 
-    $query = $conexao -> prepare("UPDATE produto SET slide = ?");
+    $query = $conexao -> prepare("UPDATE produto SET slide = ? WHERE id = ?");
     $query->bindValue(1,$imagem);
+    $query->bindValue(2,$id);
     
     
     

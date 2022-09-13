@@ -20,6 +20,10 @@
 
     .consentimento{font-size: 14px;margin:0}
     .consentimento span{color:#ff0000;cursor: pointer;}
+    @media screen and (max-width:1000px) {
+        .user{width:100%}
+        .btn-cadastrar{width: 70%;margin: 25px auto;display: block;}
+    }
 </style>
 <body>
     <?php

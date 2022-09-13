@@ -132,3 +132,48 @@
     .collapse {
         width: 101%;
     }
+    
+    @media screen and (max-width:1000px) {
+        .btn-acao {
+            width: 97px;
+        }
+        .cabeca p {
+            font-size: 13px;
+        }
+        .cabeca {
+            width: 89%;
+        }
+        .nome-ver {
+            font-size: 16px;
+        }
+        .corpo {
+            width: 90%;
+            padding: 5%;
+        }
+        .collapse {
+            width: 90.7%;
+        }
+        .corpo p.confirmado,
+        .corpo p.itens {
+            font-size: 14px;
+        }
+        .corpo .item {
+            font-size: 14px;
+        }
+        .corpo .item .detalhes .preco-qtd .preco-total p {
+            font-size: 14px
+        }
+        .corpo .item .detalhes .preco-qtd .qtd-input {
+            width: 50px;
+            font-size: 14px
+        }
+        .corpo .item .detalhes .preco-qtd input {
+            font-size: 14px;
+        }
+        .corpo .item .detalhes .preco-qtd .preco-total img {
+            width: 10px;
+        }
+        .corpo .item .detalhes .nome {
+            font-size: 14px
+        }
+    }

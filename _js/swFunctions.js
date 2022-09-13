@@ -104,13 +104,17 @@ tbUser.getItem("install").then(function(e) {
     if (e === true) {
         $("body").css({ overflow: "auto" });
         $(".splash-container").hide();
+        getProdutos();
+        getCategorias();
+        getSlide();
+        getSugestoes();
         return
     }
 
-    var produtos = getProdutos();
-    var categorias = getCategorias();
-    var slide = getSlide();
-    var sugestoes = getSugestoes();
+    getProdutos();
+    getCategorias();
+    getSlide();
+    getSugestoes();
 
     tbUser.setItem("install", true).then(function(e) {
             setTimeout(function() {

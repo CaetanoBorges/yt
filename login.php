@@ -17,7 +17,10 @@
     .btn-cadastrar{width: 309px;cursor: pointer;margin: 30px 0;}
     .esqueci{font-weight: bold;cursor: pointer;font-size: 24px;text-align: center;}
     .user{display: block;margin:0 auto 10px auto;width: 68px;}
-
+    @media screen and (max-width:1000px) {
+        .btn-entrar{width: 70%;display: block;margin: 20px auto;}
+        .btn-cadastrar{width: 70%;display: block;margin: 20px auto;}
+    }
 </style>
 <body>
     <?php
@@ -57,7 +60,9 @@
                 location.href = "index.php";
             }
         })
-
+        $(".btn-cadastrar").click(function(){
+            location.href="cadastrar.php";
+        })
         $(".btn-entrar").click(function(){
             loader("_icones/preloader.gif");
             var email = $("#email").val();
