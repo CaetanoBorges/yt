@@ -157,7 +157,7 @@ class ComposerStaticInited19ce19b301671e26abeb2964fa9b89
         ),
         'Conta\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/conta',
+            0 => __DIR__ . '/../..' . '/Conta',
         ),
         'Brick\\Math\\' => 
         array (
@@ -171,6 +171,13 @@ class ComposerStaticInited19ce19b301671e26abeb2964fa9b89
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Conta\\Classes\\Cadastrar' => __DIR__ . '/../..' . '/Conta/Classes/Cadastrar.php',
+        'Conta\\Classes\\Criptografia' => __DIR__ . '/../..' . '/Conta/Classes/Criptografia.php',
+        'Conta\\Classes\\DB\\AX' => __DIR__ . '/../..' . '/Conta/Classes/DB/AX.php',
+        'Conta\\Classes\\DB\\Selecionar' => __DIR__ . '/../..' . '/Conta/Classes/DB/Selecionar.php',
+        'Conta\\Classes\\Entrar' => __DIR__ . '/../..' . '/Conta/Classes/Entrar.php',
+        'Conta\\Classes\\Funcoes' => __DIR__ . '/../..' . '/Conta/Classes/Funcoes.php',
+        'Conta\\Classes\\Recuperar' => __DIR__ . '/../..' . '/Conta/Classes/Recuperar.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

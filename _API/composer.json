@@ -4,9 +4,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Conta\\": "conta/",
+            "Conta\\": "Conta/",
             "Push\\": "push/"
-        }
+        },
+        "classmap": [
+            "Conta/",
+            "push/"
+        ]
     },
     "require": {
         "envms/fluentpdo": "^2.2",

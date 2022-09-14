@@ -26,7 +26,7 @@ return array(
     'FG\\' => array($vendorDir . '/fgrosse/phpasn1/lib'),
     'Envms\\FluentPDO\\' => array($vendorDir . '/envms/fluentpdo/src'),
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
-    'Conta\\' => array($baseDir . '/conta'),
+    'Conta\\' => array($baseDir . '/Conta'),
     'Brick\\Math\\' => array($vendorDir . '/brick/math/src'),
     'Base64Url\\' => array($vendorDir . '/spomky-labs/base64url/src'),
 );

@@ -7,4 +7,11 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'Conta\\Classes\\Cadastrar' => $baseDir . '/Conta/Classes/Cadastrar.php',
+    'Conta\\Classes\\Criptografia' => $baseDir . '/Conta/Classes/Criptografia.php',
+    'Conta\\Classes\\DB\\AX' => $baseDir . '/Conta/Classes/DB/AX.php',
+    'Conta\\Classes\\DB\\Selecionar' => $baseDir . '/Conta/Classes/DB/Selecionar.php',
+    'Conta\\Classes\\Entrar' => $baseDir . '/Conta/Classes/Entrar.php',
+    'Conta\\Classes\\Funcoes' => $baseDir . '/Conta/Classes/Funcoes.php',
+    'Conta\\Classes\\Recuperar' => $baseDir . '/Conta/Classes/Recuperar.php',
 );
