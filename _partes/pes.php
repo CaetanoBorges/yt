@@ -11,3 +11,11 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(".aciona-alimentar").hover(function(){
+        $("#alimentar").fadeIn("fast");
+    },function(){
+        $("#alimentar").fadeOut("slow");
+    })
+</script>

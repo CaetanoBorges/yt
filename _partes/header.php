@@ -42,18 +42,71 @@
         <div class="header-content">
             <ul>
                 <a href="index.php"><li>início</li></a>
-                <a href="s.php?retalho"><li>retalho</li></a>
-                <a href="s.php?grosso"><li>grosso</li></a>
-                <a href="s.php?caixas"><li>caixas</li></a>
-                <a href="s.php?sacos"><li>sacos</li></a>
-                <a href="s.php"><li>tudo</li></a>
-                <a href="contactos.php"><li>contactos</li></a>
-                <a href="sobre.php"><li>sobre a yetu</li></a>
+                <a href="s.php?retalho" class="aciona-alimentar"><li>Produto Alimentar</li></a>
+                <a href="s.php?grosso"><li>Bebidas</li></a>
+                <a href="s.php?caixas"><li>Cosmeticos</li></a>
+                <a href="s.php?sacos"><li>Frescos</li></a>
+                <a href="s.php"><li>Vestuário</li></a>
+                <a href="s.php"><li>Mobiliario</li></a>
+                <a href="contactos.php"><li>Electrodomésticos</li></a>
             </ul>
         </div>
+
+    
     </div>
 </div>
 
+<div class="yetu-body aciona-alimentar">
+<style>
+            .menu-submenu-container{position: relative;}
+            .menu-submenu{z-index:999999;display:block;background: red;padding:50px;border-radius: 0 0 10px 10px;
+                position: absolute;
+                top:0;
+                left: 0;}
+            .menu-submenu ul {
+                width: 100%;
+                display: block;
+                z-index: 9999999;
+            }
+            .menu-submenu ul a {
+                color:black;
+                font-weight: bold;
+                text-decoration: none;
+            }
+            .menu-submenu li {
+                line-height: 39px;
+                display: inline-flex;
+                margin: 10px 14px;
+                background: #fff;
+                padding:10px;
+                text-transform: uppercase;
+                border-radius: 10px;
+            }
+
+            .menu-submenu li:hover {
+                text-shadow: 2px 2px 5px red;
+                box-shadow: 2px 2px 2px black;
+            }
+
+            
+            #alimentar{display: none;}
+        </style>
+        <div class="menu-submenu-container" id="alimentar">
+            <div class="menu-submenu">
+                <ul>
+                    <a href="s.php?retalho"><li>Produto Alimentar</li></a>
+                    <a href="s.php?retalho"><li>Produto Alimentar</li></a>
+                    <a href="s.php?retalho"><li>Produto Alimentar</li></a>
+                    <a href="s.php?retalho"><li>Produto Alimentar</li></a>
+                    <a href="s.php?retalho"><li>Produto Alimentar</li></a>
+                    <a href="s.php?retalho"><li>Produto Alimentar</li></a>
+                    <a href="s.php?retalho"><li>Produto Alimentar</li></a>
+                    <a href="s.php?retalho"><li>Produto Alimentar</li></a>
+                </ul>
+            </div>
+        </div>
+</div>
+        
 
 <!-- Modal -->
 <style>
