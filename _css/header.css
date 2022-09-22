@@ -85,6 +85,7 @@
 .header-middle-logo {
     width: 166px;
     display: inline-block;
+    cursor: pointer;
 }
 
 .header-middle a .header-qtd-cesto {
@@ -172,6 +173,86 @@
 .header-bottom li:hover {
     text-shadow: 2px 2px 5px red;
 }
+
+.menu-submenu-container {
+    position: relative;
+}
+
+.menu-submenu {
+    z-index: 999999;
+    display: block;
+    background: red;
+    padding: 50px;
+    border-radius: 0 0 10px 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.menu-submenu ul {
+    width: 100%;
+    display: block;
+    z-index: 9999999;
+}
+
+.menu-submenu ul a {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.menu-submenu li {
+    line-height: 39px;
+    display: inline-flex;
+    margin: 10px 14px;
+    background: #fff;
+    padding: 10px;
+    text-transform: uppercase;
+    border-radius: 10px;
+}
+
+.menu-submenu li:hover {
+    text-shadow: 2px 2px 5px red;
+    box-shadow: 2px 2px 2px black;
+}
+
+
+/*------------------*/
+
+#informatico {
+    display: none;
+}
+
+#alimentar {
+    display: none;
+}
+
+#bebidas {
+    display: none;
+}
+
+#cosmeticos {
+    display: none;
+}
+
+#frescos {
+    display: none;
+}
+
+#vestuarios {
+    display: none;
+}
+
+#electro {
+    display: none;
+}
+
+#mobiliario {
+    display: none;
+}
+
+
+/*-------------------*/
 
 @media screen and (max-width:1000px) {
     .header-body {

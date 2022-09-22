@@ -20,7 +20,7 @@
             <p class="cesto-label">Cesto</p>
             <div class="header-qtd-cesto"></div>
         </a>
-        <img src="_icones/logo.png" class="header-middle-logo">
+        <img src="_icones/logo.png" class="header-middle-logo" onclick="vaiIndex()">
 
         <div class="header-search">
             <div class="header-content">
@@ -41,14 +41,14 @@
     <div class="header-body">
         <div class="header-content">
             <ul>
-                <a href="index.php"><li>início</li></a>
-                <a href="s.php?retalho" class="aciona-alimentar"><li>Produto Alimentar</li></a>
-                <a href="s.php?grosso"><li>Bebidas</li></a>
-                <a href="s.php?caixas"><li>Cosmeticos</li></a>
-                <a href="s.php?sacos"><li>Frescos</li></a>
-                <a href="s.php"><li>Vestuário</li></a>
-                <a href="s.php"><li>Mobiliario</li></a>
-                <a href="contactos.php"><li>Electrodomésticos</li></a>
+                <a href="s.php?informaticos" class="aciona-informatico"><li>Informaticos</li></a>
+                <a href="s.php?alimentar" class="aciona-alimentar"><li>Alimentar</li></a>
+                <a href="s.php?bebidas" class="aciona-bebidas"><li>Bebidas</li></a>
+                <a href="s.php?cosmeticos" class="aciona-cosmeticos"><li>Cosmeticos</li></a>
+                <a href="s.php?frescos" class="aciona-frescos"><li>Frescos</li></a>
+                <a href="s.php?vestuario" class="aciona-vestuarios"><li>Vestuário</li></a>
+                <a href="s.php?mobiliario" class="aciona-mobiliario"><li>Mobiliario</li></a>
+                <a href="s.php?eletrodomesticos" class="aciona-electro"><li>Electrodomésticos</li></a>
             </ul>
         </div>
 
@@ -56,57 +56,85 @@
     </div>
 </div>
 
-<div class="yetu-body aciona-alimentar">
-<style>
-            .menu-submenu-container{position: relative;}
-            .menu-submenu{z-index:999999;display:block;background: red;padding:50px;border-radius: 0 0 10px 10px;
-                position: absolute;
-                top:0;
-                left: 0;}
-            .menu-submenu ul {
-                width: 100%;
-                display: block;
-                z-index: 9999999;
-            }
-            .menu-submenu ul a {
-                color:black;
-                font-weight: bold;
-                text-decoration: none;
-            }
-            .menu-submenu li {
-                line-height: 39px;
-                display: inline-flex;
-                margin: 10px 14px;
-                background: #fff;
-                padding:10px;
-                text-transform: uppercase;
-                border-radius: 10px;
-            }
-
-            .menu-submenu li:hover {
-                text-shadow: 2px 2px 5px red;
-                box-shadow: 2px 2px 2px black;
-            }
-
-            
-            #alimentar{display: none;}
-        </style>
-        <div class="menu-submenu-container" id="alimentar">
-            <div class="menu-submenu">
+<div class="yetu-body aciona-informatico">
+        <div class="menu-submenu-container  aciona-informatico" id="informatico">
+            <div class="menu-submenu aciona-informatico">
                 <ul>
-                    <a href="s.php?retalho"><li>Produto Alimentar</li></a>
-                    <a href="s.php?retalho"><li>Produto Alimentar</li></a>
-                    <a href="s.php?retalho"><li>Produto Alimentar</li></a>
-                    <a href="s.php?retalho"><li>Produto Alimentar</li></a>
-                    <a href="s.php?retalho"><li>Produto Alimentar</li></a>
-                    <a href="s.php?retalho"><li>Produto Alimentar</li></a>
-                    <a href="s.php?retalho"><li>Produto Alimentar</li></a>
-                    <a href="s.php?retalho"><li>Produto Alimentar</li></a>
+                    <a href="s.php?computadores"><li>Computadores</li></a>
+                    <a href="s.php?tinteiros"><li>Tinteiros</li></a>
                 </ul>
             </div>
         </div>
 </div>
-        
+<div class="yetu-body aciona-alimentar">
+        <div class="menu-submenu-container  aciona-alimentar" id="alimentar">
+            <div class="menu-submenu aciona-alimentar">
+                <ul>
+                    <a href="s.php?sereais"><li>Sereais</li></a>
+                </ul>
+            </div>
+        </div>
+</div>
+    
+<div class="yetu-body aciona-bebidas">
+        <div class="menu-submenu-container  aciona-bebidas" id="bebidas">
+            <div class="menu-submenu aciona-bebidas">
+                <ul>
+                    <a href="s.php?alcolicas"><li>Alcolicas</li></a>
+                    <a href="s.php?espirituosas"><li>Espirituosas</li></a>
+                </ul>
+            </div>
+        </div>
+</div>
+    
+<div class="yetu-body aciona-cosmeticos">
+        <div class="menu-submenu-container  aciona-cosmeticos" id="cosmeticos">
+            <div class="menu-submenu aciona-cosmeticos">
+                <ul>
+                </ul>
+            </div>
+        </div>
+</div>
+    
+<div class="yetu-body aciona-frescos">
+        <div class="menu-submenu-container  aciona-frescos" id="frescos">
+            <div class="menu-submenu aciona-frescos">
+                <ul>
+                    <a href="s.php?frango"><li>Produto Alimentar</li></a>
+                    <a href="s.php?peru"><li>Produto Alimentar</li></a>
+                    <a href="s.php?galinha"><li>Galinha gentia</li></a>
+                    <a href="s.php?coelho"><li>Coelho</li></a>
+                </ul>
+            </div>
+        </div>
+</div>
+    
+<div class="yetu-body aciona-vestuarios">
+        <div class="menu-submenu-container  aciona-vestuarios" id="vestuarios">
+            <div class="menu-submenu aciona-vestuarios">
+                <ul>
+                </ul>
+            </div>
+        </div>
+</div>
+    
+<div class="yetu-body aciona-electro">
+        <div class="menu-submenu-container  aciona-electro" id="electro">
+            <div class="menu-submenu aciona-electro">
+                <ul>
+                </ul>
+            </div>
+        </div>
+</div>
+    
+<div class="yetu-body aciona-mobiliario">
+        <div class="menu-submenu-container  aciona-mobiliario" id="mobiliario">
+            <div class="menu-submenu aciona-mobiliario">
+                <ul>
+                </ul>
+            </div>
+        </div>
+</div>       
 
 <!-- Modal -->
 <style>
@@ -288,5 +316,12 @@
             return
         }
         notificacao("A pesquisa precisa ter pelo menos 4 letras")
+    }
+
+
+
+    //-------------------------
+    function vaiIndex(){
+        location.href="index.php"
     }
 </script>

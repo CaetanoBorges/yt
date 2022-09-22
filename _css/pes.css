@@ -31,6 +31,31 @@
     cursor: pointer;
 }
 
+.menu-baixo {
+    width: 100%;
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: space-between;
+    background-color: red;
+    padding: 5px 10px;
+    font-weight: bold;
+}
+
+.menu-baixo li {
+    display: inline-block;
+}
+
+.menu-baixo a {
+    color: black;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.menu-baixo a:hover {
+    color: white;
+}
+
 @media screen and (max-width:1000px) {
     .pes-body {
         width: 90%;

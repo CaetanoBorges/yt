@@ -53,7 +53,7 @@
                     <input type="text" id="rua-user">
                 </div>
                 <div>
-                    <p>Email</p>
+                    <p>Email (Opcional)</p>
                     <input type="email" id="email-user">
                 </div>
                 <div>
@@ -83,7 +83,7 @@
             var email = $("#email-user").val();
             var telefone = $("#telefone-user").val();
 
-            if (maior(nome, 6) && maior(rua, 4) && maior(bairro, 4) && maior(email, 6) && maior(telefone, 8)) {
+            if (maior(nome, 6) && maior(rua, 4) && maior(bairro, 4) && maior(telefone, 8)) {
                 var user = {
                     "nome": nome,
                     "telefone": telefone,

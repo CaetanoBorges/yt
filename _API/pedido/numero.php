@@ -22,7 +22,10 @@ if(isset($_POST['numero']) and !empty($_POST['numero'])){
         $mailer = new PHPMailer(true);
         $corp = file_get_contents("../Conta/emailTemplates/confirmarPedido.html");
         $corpo=str_replace("--NUMERO--",$digitos,$corp);
-        $enviar = Funcoes::enviaEmail($mailer, $_POST['email'], "Confirmar pedido-YETU. ( ".$digitos." )", $corpo);
+        if(isset($_POST['email']) and !empty($_POST['email'])){
+            $enviar = Funcoes::enviaEmail($mailer, $_POST['email'], "Confirmar pedido-YETU. ( ".$digitos." )", $corpo);
+        }
+        
         
         $return['payload'] = "Certo";
         $return['ok'] = true;
