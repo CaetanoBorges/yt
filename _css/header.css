@@ -179,10 +179,11 @@
 }
 
 .menu-submenu {
+    width: 90%;
     z-index: 999999;
     display: block;
     background: red;
-    padding: 50px;
+    padding: 5%;
     border-radius: 0 0 10px 10px;
     position: absolute;
     top: 0;

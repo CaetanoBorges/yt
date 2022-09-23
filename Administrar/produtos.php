@@ -21,7 +21,6 @@ if (isset($_SESSION['yetu-debliw'])) {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../_arq/bootstrap.min.css">
-        <script src="../_arq/bootstrap.min.js"></script>
         <link rel="stylesheet" href="_arq/one.css">
         <title>Produtos</title>
     </head>
@@ -45,15 +44,33 @@ if (isset($_SESSION['yetu-debliw'])) {
                     <div class="menu">
                     <?php
                     foreach($res as $key => $value){ ?>
-                        <a href="produto.php?p=<?php echo $value['id'] ?>&s=<?php echo $value['stock'] ?>"><div class="menu-item" style="background: none;">
+                       <div class="menu-item" style="background: none;position:relative;">
                             <img src="../prod/<?php echo $value['img'] ?>">
-                            <h3><?php echo $value['nome'] ?></h3>
-                        </div></a>
+                            <buttun type="button" class="btn btn-sm btn-danger" style="width: 91%;border-radius:0;"  data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $value['id'] ?>">Informação</buttun>
+                             <a href="produto.php?p=<?php echo $value['id'] ?>&s=<?php echo $value['stock'] ?>"  class="btn btn-sm btn-info" style="width: 91%;border-radius:0;"><?php echo $value['nome'] ?></a>
+                        </div>
+
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal<?php echo $value['id'] ?>" tabindex="-1"  aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <h3>Restam <?php echo $value['qtd'] ?> <?php echo $value['unidades'] ?></h3>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
                     <?php }
                 ?>
                 </div>
             </div>
         </div>
+        <script src="../_arq/jquery.js"></script>
+        <script src="../_arq/bootstrap.min.js"></script>
     </body>
     </html>
     <?php

@@ -12,6 +12,7 @@ if(isset($_POST['acao']) and $_POST['acao'] == "editar"){
     $stock = Funcoes::EspacoPorTraco($_POST['stock']);
     $categoria = Funcoes::EspacoPorTraco($_POST['categoria']);
     $subcategoria = Funcoes::EspacoPorTraco($_POST['subcategoria']);
+    $unidades = $_POST['unidades'];
     $nome = $_POST['nome'];
     $preco = Funcoes::EspacoPorTraco($_POST['preco']);
     $qtd = Funcoes::EspacoPorTraco($_POST['qtd']);
@@ -30,16 +31,17 @@ if(isset($_POST['acao']) and $_POST['acao'] == "editar"){
         $imagem_temp=$_FILES['imagem']['tmp_name'];
     }
 
-    $query = $conexao -> prepare("UPDATE produto SET nome = ?, categoria = ?, subcategoria = ?, stock = ? , qtd = ?, preco = ?, descricao = ?, img = ? WHERE id = ?");
+    $query = $conexao -> prepare("UPDATE produto SET nome = ?, categoria = ?, subcategoria = ?, unidades = ?, stock = ? , qtd = ?, preco = ?, descricao = ?, img = ? WHERE id = ?");
     $query->bindValue(1,$nome);
     $query->bindValue(2,$categoria);
     $query->bindValue(3,$subcategoria);
-    $query->bindValue(4,$stock);
-    $query->bindValue(5,$qtd);
-    $query->bindValue(6,$preco);
-    $query->bindValue(7,$descricao);
-    $query->bindValue(8,$imagem);
-    $query->bindValue(9,$id);
+    $query->bindValue(4,$unidades);
+    $query->bindValue(5,$stock);
+    $query->bindValue(6,$qtd);
+    $query->bindValue(7,$preco);
+    $query->bindValue(8,$descricao);
+    $query->bindValue(9,$imagem);
+    $query->bindValue(10,$id);
     
     
     if( $query->execute() ){
@@ -166,7 +168,8 @@ if (isset($_SESSION['yetu-debliw'])) {
                     <input type="hidden" value="<?php echo $_GET['s'] ?>" name="stock">
                     <input type="hidden" value="<?php echo $resProduto['id'] ?>" name="id">
                     <input type="hidden" value="<?php echo $resProduto['img'] ?>" name="img">
-                    <select name="categoria" class="form-control" style="width:100%;text-align:center;">
+                    <label for="categoria">Categoria</label>
+                    <select name="categoria" class="form-control" style="width:100%;text-align:center;" id="categoria">
                         <option value="<?php echo $resProduto['categoria'] ?>"><?php echo $resProduto['categoria'] ?></option>
                         <?php 
                             foreach($categoriaRes as $res){ ?>
@@ -175,7 +178,8 @@ if (isset($_SESSION['yetu-debliw'])) {
                         ?>
                     </select>
                     <br>
-                    <select name="subcategoria" class="form-control" style="width:100%;text-align:center;">
+                    <label for="subcategoria">Subcategoria</label>
+                    <select name="subcategoria" class="form-control" style="width:100%;text-align:center;" id="subcategoria">
                         <option value="<?php echo $resProduto['subcategoria'] ?>"><?php echo $resProduto['subcategoria'] ?></option>
                         <?php 
                             foreach($subcategoriaRes as $res){ ?>
@@ -183,6 +187,28 @@ if (isset($_SESSION['yetu-debliw'])) {
                             <?php }
                         ?>
                     </select>
+                    <br>
+                    <label for="">Unidade</label>
+                    <div style="display:flex;align-items:center;justify-content:space-between;background:white;padding:5px;">
+                        <div style="display: inline-block;width:fit-content">
+                            <input class="form-check-input" type="radio" name="unidades" id="flexRadioDefault1" value="Caixas(s)" <?php if($resProduto['unidades'] == "Caixas(s)"){ echo "checked"; } ?>>
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Caixa
+                            </label>
+                        </div>
+                        <div style="display: inline-block;width:fit-content">
+                            <input class="form-check-input" type="radio" name="unidades" id="flexRadioDefault2" value="Embalagem(s)" <?php if($resProduto['unidades'] == "Embalagem(s)"){ echo "checked"; } ?>>
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Embalagem
+                            </label>
+                        </div>
+                        <div style="display: inline-block;width:fit-content">
+                            <input class="form-check-input" type="radio" name="unidades" id="flexRadioDefault3" value="Unidade(s)" <?php if($resProduto['unidades'] == "Unidade(s)"){ echo "checked"; } ?> >
+                            <label class="form-check-label" for="flexRadioDefault3">
+                                Unidade
+                            </label>
+                        </div>
+                    </div>
                     <br>
                     <label for="nome">Nome</label>
                     <input type="text" name="nome" id="nome" placeholder="Nome" class="form-control" value="<?php echo $resProduto['nome'] ?>" required="required">

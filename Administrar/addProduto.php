@@ -13,6 +13,7 @@ if(isset($_POST['nome'])){
     $stock = Funcoes::EspacoPorTraco($_POST['stock']);
     $categoria = Funcoes::EspacoPorTraco($_POST['categoria']);
     $subcategoria = Funcoes::EspacoPorTraco($_POST['subcategoria']);
+    $unidades = $_POST['unidades'];
     $nome = $_POST['nome'];
     $preco = Funcoes::EspacoPorTraco($_POST['preco']);
     $qtd = Funcoes::EspacoPorTraco($_POST['qtd']);
@@ -22,16 +23,17 @@ if(isset($_POST['nome'])){
     $imagem=time()."-".Funcoes::EspacoPorTraco($cap);
     $imagem_temp=$_FILES['imagem']['tmp_name'];
 
-    $query = $conexao -> prepare("INSERT INTO produto (id,nome,categoria,subcategoria,stock,qtd,preco,descricao,img) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $query = $conexao -> prepare("INSERT INTO produto (id,nome,categoria,subcategoria, unidades, stock,qtd,preco,descricao,img) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $query->bindValue(1,$id);
     $query->bindValue(2,$nome);
     $query->bindValue(3,$categoria);
     $query->bindValue(4,$subcategoria);
-    $query->bindValue(5,$stock);
-    $query->bindValue(6,$qtd);
-    $query->bindValue(7,$preco);
-    $query->bindValue(8,$descricao);
-    $query->bindValue(9,$imagem);
+    $query->bindValue(5,$unidades);
+    $query->bindValue(6,$stock);
+    $query->bindValue(7,$qtd);
+    $query->bindValue(8,$preco);
+    $query->bindValue(9,$descricao);
+    $query->bindValue(10,$imagem);
     
     
     if($query->execute()){
@@ -77,6 +79,7 @@ if (isset($_SESSION['yetu-debliw'])) {
             <div class="principal-corpo">
                 <form action="addProduto.php" method="post" enctype="multipart/form-data" autocomplete="off">
                     <input type="hidden" value="<?php echo $_GET['s'] ?>" name="stock">
+                    <label for="">Categoria</label>
                     <select name="categoria" class="form-control" style="width:100%;text-align:center;">
                         <option value="">Selecionar categória</option>
                         <?php 
@@ -86,6 +89,7 @@ if (isset($_SESSION['yetu-debliw'])) {
                         ?>
                     </select>
                     <br>
+                    <label for="">Subcategoria</label>
                     <select name="subcategoria" class="form-control" style="width:100%;text-align:center;">
                         <option value="">Selecionar subcategória</option>
                         <?php 
@@ -94,6 +98,28 @@ if (isset($_SESSION['yetu-debliw'])) {
                             <?php }
                         ?>
                     </select>
+                    <br>
+                    <label for="">Unidade</label>
+                    <div style="display:flex;align-items:center;justify-content:space-between;background:white;padding:5px;">
+                        <div style="display: inline-block;width:fit-content">
+                            <input class="form-check-input" type="radio" name="unidades" id="flexRadioDefault1" value="Caixas(s)" >
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Caixa
+                            </label>
+                        </div>
+                        <div style="display: inline-block;width:fit-content">
+                            <input class="form-check-input" type="radio" name="unidades" id="flexRadioDefault2" value="Embalagem(s)" >
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Embalagem
+                            </label>
+                        </div>
+                        <div style="display: inline-block;width:fit-content">
+                            <input class="form-check-input" type="radio" name="unidades" id="flexRadioDefault3" value="Unidade(s)" checked >
+                            <label class="form-check-label" for="flexRadioDefault3">
+                                Unidade
+                            </label>
+                        </div>
+                    </div>
                     <br>
                     <label for="nome">Nome</label>
                     <input type="text" name="nome" id="nome" placeholder="Nome" class="form-control" required="required">

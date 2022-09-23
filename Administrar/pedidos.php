@@ -35,6 +35,19 @@ if(isset($_POST['id']) and !empty($_POST['id'])){
         $produtos = '';
         foreach($itens as $key => $v){ 
             $v = (array) $v;
+
+            $query = $conexao -> prepare("SELECT * FROM produto WHERE id = ?");
+            $query->bindValue(1,$v['id']);
+            $query->execute();
+            $result = $query->fetch();
+
+            $qtdAtual = $result['qtd'] - $v['qtd'];
+
+            $query = $conexao -> prepare("UPDATE produto SET qtd = ? WHERE id = ?");
+            $query->bindValue(1,$qtdAtual);
+            $query->bindValue(2,$v['id']);
+            $query->execute();
+
             $produtos.='<div style="width: 100%;display:block;position:relative;">'
                 .'<p stayle="margin:0;font-size:14px;">Nome: <b>'. $v['nome'] .'</b></p>'
                 .'<p stayle="margin:0;font-size:14px;">Preco: <b>'.number_format($v['preco'], 0, '', ' ') .' kz</b></p>'
