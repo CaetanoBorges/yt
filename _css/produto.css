@@ -9,7 +9,6 @@
 
 .produto-item .img {
     width: 100%;
-    border: 1px solid #eaeaea;
 }
 
 .produto-item .img img {
@@ -42,6 +41,12 @@
     display: block;
     text-transform: uppercase;
     font-size: 20px;
+}
+
+.produto-item .detalhes .quantidade-existente {
+    display: block;
+    text-transform: capitalize;
+    font-size: 16px;
     margin-bottom: 13px;
 }
 
@@ -78,7 +83,6 @@
     align-items: center;
     margin-top: 2px;
     position: absolute;
-    bottom: 0;
     left: 2%;
 }
 
@@ -87,7 +91,6 @@
     height: 49px;
     margin-top: 2px;
     position: absolute;
-    bottom: 0;
     right: 2%;
     cursor: pointer;
 }

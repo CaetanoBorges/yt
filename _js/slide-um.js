@@ -1,4 +1,10 @@
   function slideUm(value, parent) {
+      var ite = '';
+      if (window.screen.availWidth > 500) {
+          ite = value.slide;
+      } else {
+          ite = value.img;
+      }
       $('#yetu-slide-um').append(`
                 <li>
                     <div class="slide-element">
@@ -12,7 +18,7 @@
                             </div>
                         </div>
                         
-                        <img src="prod/${value.slide}" class="img-prod">
+                        <img src="prod/${ite}" class="img-prod">
                     </div>
                 </li>`)
 

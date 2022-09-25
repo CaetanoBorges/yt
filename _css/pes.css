@@ -31,6 +31,12 @@
     cursor: pointer;
 }
 
+.menu-baixo-container {
+    width: 100%;
+    height: fit-content;
+    background-color: red;
+}
+
 .menu-baixo {
     width: 100%;
     display: flex;
@@ -47,13 +53,13 @@
 }
 
 .menu-baixo a {
-    color: black;
+    color: white;
     text-decoration: none;
     text-transform: uppercase;
 }
 
 .menu-baixo a:hover {
-    color: white;
+    color: black;
 }
 
 @media screen and (max-width:1000px) {
@@ -64,5 +70,15 @@
     .instalar {
         width: 50px;
         left: 20px;
+    }
+    .menu-baixo {
+        width: 98%;
+        display: block;
+        list-style: none;
+        background-color: red;
+        padding: 1%;
+    }
+    .menu-baixo li {
+        display: block;
     }
 }

@@ -25,7 +25,7 @@ if(isset($_POST['endpoint']) and !empty($_POST['endpoint'])){
             
         }else{
             $query = Funcoes::conexao() -> prepare("INSERT INTO push (chave_user, authtoken, p256dh, endpoint) VALUES(?, ?, ?, ?)");
-            $query->bindValue(1,$_POST['token']);
+            $query->bindValue(1,$acesso['user']);
             $query->bindValue(2,$_POST['auth']);
             $query->bindValue(3,$_POST['pdh']);
             $query->bindValue(4,$_POST['endpoint']);
@@ -34,10 +34,9 @@ if(isset($_POST['endpoint']) and !empty($_POST['endpoint'])){
         return;
     }
 
-    $query = Funcoes::conexao() -> prepare("INSERT INTO push (chave_user, authtoken, p256dh, endpoint) VALUES(?, ?, ?, ?)");
-    $query->bindValue(1,$_POST['token']);
-    $query->bindValue(2,$_POST['auth']);
-    $query->bindValue(3,$_POST['pdh']);
-    $query->bindValue(4,$_POST['endpoint']);
+    $query = Funcoes::conexao() -> prepare("INSERT INTO push (authtoken, p256dh, endpoint) VALUES(?, ?, ?, ?)");
+    $query->bindValue(1,$_POST['auth']);
+    $query->bindValue(2,$_POST['pdh']);
+    $query->bindValue(3,$_POST['endpoint']);
     $query->execute();
 }

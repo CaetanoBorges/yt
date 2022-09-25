@@ -1,6 +1,7 @@
 importScripts("_arq/localforage.js");
 importScripts("_arq/db.config.js");
 importScripts("_js/bin/getData.js");
+importScripts("_js/bin/swConections.js");
 // Names of the two caches used in this version of the service worker.
 // Change to v2, etc. when you update any of the local resources, which will
 // in turn trigger the install event again.
@@ -165,6 +166,7 @@ self.addEventListener('sync', function(event) {
     //console.log(event);
     if (event.tag === 'sincronizar') {
         //event.waitUntil(sendOutboxMessages());
+
         pegaProdutos();
         pegaSugestoes();
         pegaCategorias();

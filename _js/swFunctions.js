@@ -100,6 +100,18 @@ function registraNotificacao() {
 
 }
 
+function registaUserNaNotificacao() {
+    tbUser.getItem("notificacao").then(function(status) {
+        if (status) {
+            tbUser.getItem("token").then(function(token) {
+                if (token) {
+                    registraNotificacao();
+                }
+            })
+        }
+    })
+}
+
 tbUser.getItem("install").then(function(e) {
     if (e === true) {
         $("body").css({ overflow: "auto" });
@@ -150,3 +162,6 @@ setTimeout(function() {
     })
 }, 5000)
 */
+
+
+registaUserNaNotificacao();

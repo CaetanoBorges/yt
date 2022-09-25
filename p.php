@@ -25,6 +25,10 @@
                     <div class="nome"> 
                         _______________
                     </div>
+                    <input type="hidden" class="qtd-existente">
+                    <div class="quantidade-existente"> 
+                        __________________________
+                    </div>
                     <div class="descricao">
                        _______________________________________________________
                        _______________________________________________________
@@ -76,6 +80,8 @@
             $(".preco-unitario-prod p").html(formatNum(Number(item.preco)));
             $(".preco-total-prod p").html("Total: "+formatNum(Number(item.preco)));
             $(".detalhes .nome").html(item.nome);
+            $(".detalhes .quantidade-existente").html("Restam "+item.qtd +" "+item.unidades);
+            $(".detalhes .qtd-existente").val(item.qtd);
             $(".detalhes .categoria").html(item.categoria);
             $(".detalhes .descricao").html(item.descricao);
             $(".produto-item .img img").attr("src","prod/" + item.img);
@@ -97,7 +103,10 @@
 
         function maisTelaProd() {
             var qtd = Number($(".qtd-tela-produto input").val()) + 1;
-            
+            if(qtd > $(".qtd-existente").val()){
+                return;
+            }
+
             $(".qtd-tela-produto input").val(qtd);
             var preco = $(".produto-preco-unitario").val();
             var res = (qtd * preco);
