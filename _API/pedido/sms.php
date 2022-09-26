@@ -15,4 +15,4 @@ $data = (array) $res['data'];
 Funcoes::enviaSMS($data['authToken'],["921797626"],"Mensagem de teste");
 
 //$e = Funcoes::HTTPpost("https://app.smshub.ao/api/sms",["accessToken" => $data['authToken']]);
-//var_dump($e);
+//var_dump($e);<<<
