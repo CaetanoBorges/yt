@@ -77,6 +77,59 @@ class Funcoes{
         }
     }
 
+    static function HTTPpost($url, $opt){
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL,$url);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($opt));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $res = curl_exec($ch);
+        curl_close($ch);
+        var_dump($res);
+    
+        return $res;
+    }
+
+
+
+
+
+
+
+
+    static function enviaSMS($token,$numero,$mensagem){
+        // set post fields
+        $post['contactNo'] = $numero;
+        $post['message'] = $mensagem;
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL,"https://app.smshub.ao/api/sendsms");
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $headers = [
+            'accessToken:'.$token,
+        ];
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+        $res = curl_exec($ch);
+        curl_close($ch);
+
+        var_dump($res);
+    
+        return $res;
+    }
+
+
+
+
+
+
+
+
+
     static function chaveDB(){
         return uniqid();
     }
