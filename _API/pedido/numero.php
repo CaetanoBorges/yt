@@ -19,6 +19,10 @@ if(isset($_POST['numero']) and !empty($_POST['numero'])){
         $query->bindValue(2,$_POST['numero']);
         $query->bindValue(3,$_POST['email']);
         $query->execute();
+
+        $numeroCliente = $_POST['numero'];
+        Funcoes::enviaSMS(["$numeroCliente"],"$digitos é o seu número para confirmar o pedido. Loja Yetu");
+
         $mailer = new PHPMailer(true);
         $corp = file_get_contents("../Conta/emailTemplates/confirmarPedido.html");
         $corpo=str_replace("--NUMERO--",$digitos,$corp);
