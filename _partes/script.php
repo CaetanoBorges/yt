@@ -2,6 +2,7 @@
 <script src="_arq/localforage.js"></script>
 <script src="_arq/db.config.js"></script>
 
+<script src="https://unpkg.com/@popperjs/core@2"></script>
 <script src="_arq/bootstrap.min.js"></script>
 <script src="_arq/lightslider.js"></script>
 <script src="_js/bin/getData.js"></script>

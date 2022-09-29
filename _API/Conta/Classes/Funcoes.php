@@ -86,7 +86,6 @@ class Funcoes{
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $res = curl_exec($ch);
         curl_close($ch);
-        var_dump($res);
     
         return $res;
     }
@@ -98,7 +97,12 @@ class Funcoes{
 
 
 
-    static function enviaSMS($token,$numero,$mensagem){
+    static function enviaSMS($numero,$mensagem){
+        // get token
+        $enviar = self::HTTPpost("https://app.smshub.ao/api/authentication",["authId" => "160983163940495315","secretKey" => 'aNjB8hJZ1gu5NKPCNucqfLwnLhMu92i8wQgdoWPinrxDScvPTsGP62OZHCBVzagcVAnSVbkoXfK1qbLVOLGYdXa2bGMLWSH8CVlw']);
+        $res = (array) json_decode($enviar);
+        $data = (array) $res['data'];
+
         // set post fields
         $post['contactNo'] = $numero;
         $post['message'] = $mensagem;
@@ -110,14 +114,13 @@ class Funcoes{
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $headers = [
-            'accessToken:'.$token,
+            'accessToken:'.$data['authToken'],
         ];
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
         $res = curl_exec($ch);
         curl_close($ch);
 
-        var_dump($res);
     
         return $res;
     }

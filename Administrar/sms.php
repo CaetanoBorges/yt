@@ -5,6 +5,13 @@ session_start();
 
 require '../_API/vendor/autoload.php';
 
+if(isset($_POST['telefone']) and !empty($_POST['telefone'])){
+    $telefone = $_POST['telefone'];
+    Funcoes::enviaSMS(["$telefone"],$_POST['mensagem']);
+    header('Location: usuarios.php');
+    exit();
+}
+
 if (isset($_SESSION['yetu-debliw'])) {
 
     $conexao = Funcoes::conexao();
@@ -39,7 +46,7 @@ if (isset($_SESSION['yetu-debliw'])) {
                     <div class="card card-body">
                     <form action="sms.php" method="post">
                         <input type="hidden" name="user" value="<?php echo $resUsuario['id'] ?>">
-                        <input type="text" name="titulo" required="required" placeholder="Titulo" class="form-control" maxlength="25">
+                        <input type="hidden" name="telefone" value="<?php echo $resUsuario['telefone'] ?>">
                         <input type="text" name="mensagem" required="required" placeholder="Mensagem" class="form-control" maxlength="50">
                         <button type="button" class="btn btn-danger form-control" style="width:100% !important;"  data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">ENVIAR SMS</button>
                 

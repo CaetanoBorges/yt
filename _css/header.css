@@ -207,7 +207,7 @@
     display: inline-flex;
     margin: 10px 14px;
     background: #fff;
-    padding: 10px;
+    padding: 0px 10px;
     text-transform: uppercase;
     border-radius: 10px;
 }

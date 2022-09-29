@@ -62,6 +62,9 @@
                 <ul>
                     <a href="s.php?computadores"><li>Computadores</li></a>
                     <a href="s.php?tinteiros"><li>Tinteiros</li></a>
+                    <a href="s.php?Monitores"><li>Monitores</li></a>
+                    <a href="s.php?SmartPhones"><li>SmartPhones</li></a>
+                    <a href="s.php?SmartWatches"><li>SmartWatches</li></a>
                 </ul>
             </div>
         </div>
@@ -71,6 +74,12 @@
             <div class="menu-submenu aciona-alimentar">
                 <ul>
                     <a href="s.php?sereais"><li>Sereais</li></a>
+                    <a href="s.php?sereais"><li>FARINHA DE TRIGO</li></a>
+                    <a href="s.php?sereais"><li>Arroz</li></a>
+                    <a href="s.php?sereais"><li>Leite</li></a>
+                    <a href="s.php?sereais"><li>FARINHA DE MILHO</li></a>
+                    <a href="s.php?sereais"><li>Açucar</li></a>
+                    <a href="s.php?sereais"><li>ÓLEO DE PALMA</li></a>
                 </ul>
             </div>
         </div>
@@ -80,8 +89,13 @@
         <div class="menu-submenu-container  aciona-bebidas" id="bebidas">
             <div class="menu-submenu aciona-bebidas">
                 <ul>
+                    <a href="s.php?Café"><li>Café</li></a>
+                    <a href="s.php?Chá"><li>Chá</li></a>
+                    <a href="s.php?Energéticas"><li>Energéticas</li></a>
                     <a href="s.php?alcolicas"><li>Alcolicas</li></a>
                     <a href="s.php?espirituosas"><li>Espirituosas</li></a>
+                    <a href="s.php?Refrigerantes"><li>Refrigerantes</li></a>
+                    <a href="s.php?Água"><li>Água</li></a>
                 </ul>
             </div>
         </div>
@@ -91,6 +105,12 @@
         <div class="menu-submenu-container  aciona-cosmeticos" id="cosmeticos">
             <div class="menu-submenu aciona-cosmeticos">
                 <ul>
+                    <a href="s.php?Perfumes"><li>Perfumes</li></a>
+                    <a href="s.php?Desodorantes"><li>Desodorantes</li></a>
+                    <a href="s.php?Cremes"><li>Cremes</li></a>
+                    <a href="s.php?Shampoo"><li>Shampoo</li></a>
+                    <a href="s.php?Condicionador"><li>Condicionador</li></a>
+                    <a href="s.php?Maquilhagem"><li>Maquilhagem</li></a>
                 </ul>
             </div>
         </div>
@@ -100,8 +120,8 @@
         <div class="menu-submenu-container  aciona-frescos" id="frescos">
             <div class="menu-submenu aciona-frescos">
                 <ul>
-                    <a href="s.php?frango"><li>Produto Alimentar</li></a>
-                    <a href="s.php?peru"><li>Produto Alimentar</li></a>
+                    <a href="s.php?frango"><li>Frango</li></a>
+                    <a href="s.php?peru"><li>Peru</li></a>
                     <a href="s.php?galinha"><li>Galinha gentia</li></a>
                     <a href="s.php?coelho"><li>Coelho</li></a>
                 </ul>
@@ -113,6 +133,12 @@
         <div class="menu-submenu-container  aciona-vestuarios" id="vestuarios">
             <div class="menu-submenu aciona-vestuarios">
                 <ul>
+                    <a href="s.php?Homem"><li>Homem</li></a>
+                    <a href="s.php?Mulher"><li>Mulher</li></a>
+                    <a href="s.php?Roupa Interior"><li>Roupa Interior</li></a>
+                    <a href="s.php?Calçado"><li>Calçado</li></a>
+                    <a href="s.php?Acessórios"><li>Acessórios</li></a>
+                    <a href="s.php?Têxtil Lar"><li>Têxtil Lar</li></a>
                 </ul>
             </div>
         </div>
@@ -122,6 +148,9 @@
         <div class="menu-submenu-container  aciona-electro" id="electro">
             <div class="menu-submenu aciona-electro">
                 <ul>
+                    <a href="s.php?Ar Condicionado"><li>Ar Condicionado</li></a>
+                    <a href="s.php?Lâmpadas"><li>Lâmpadas</li></a>
+                    <a href="s.php?Secadores"><li>Secadores</li></a>
                 </ul>
             </div>
         </div>
@@ -131,6 +160,13 @@
         <div class="menu-submenu-container  aciona-mobiliario" id="mobiliario">
             <div class="menu-submenu aciona-mobiliario">
                 <ul>
+                    <a href="s.php?Mesa"><li>Mesa</li></a>
+                    <a href="s.php?Cadeira"><li>Cadeira</li></a>
+                    <a href="s.php?Sofá"><li>Sofá</li></a>
+                    <a href="s.php?Colchão"><li>Colchão</li></a>
+                    <a href="s.php?Cama"><li>Cama</li></a>
+                    <a href="s.php?Guarda Fato"><li>Guarda Fato</li></a>
+                    <a href="s.php?Escritório"><li>Escritório</li></a>
                 </ul>
             </div>
         </div>
@@ -191,15 +227,59 @@
   </div>
 </div>
 <div class="menu-mobile">
-
-        <debliwui-menu tip_background="#980000" tip_color="#fff">
-            <div slot="sms">
-
-            </div>
-        </debliwui-menu>
-    </div>
+<div class="dropdown">
+    <img src="_arq/menu-in.png" class="dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" style="width:30px;cursor: pointer;">
+  
+    <style>
+        .dropdown-menu a{text-decoration: none;text-transform: uppercase;}
+    </style>
+  <ul class="dropdown-menu form-control" aria-labelledby="dropdownMenuLink" style="width: fit-content;">
+        <a href="s.php?informaticos" ><li class="dropdown-item form-control">Informaticos</li></a>
+        <a href="s.php?alimentar" ><li class="dropdown-item form-control">Alimentar</li></a>
+        <a href="s.php?bebidas"><li class="dropdown-item form-control">Bebidas</li></a>
+        <a href="s.php?cosmeticos" ><li class="dropdown-item form-control">Cosmeticos</li></a>
+        <a href="s.php?frescos"><li class="dropdown-item form-control">Frescos</li></a>
+        <a href="s.php?vestuario" ><li class="dropdown-item form-control">Vestuário</li></a>
+        <a href="s.php?mobiliario" ><li class="dropdown-item form-control">Mobiliario</li></a>
+        <a href="s.php?eletrodomesticos"><li class="dropdown-item form-control">Electrodomésticos</li></a>
+        <li class="dropdown-item form-control">
+            
+            <style>
+                .mobile{max-width:fit-content;padding:2%;background: none;border-top: 1px solid red;}
+                .mobile li {margin: 5px 0;color:black !important}
+            </style>
+            <ul class="menu-baixo mobile">
+            <a href="index.php">
+                <li>INICIO</li>
+            </a>
+            <a href="conta.php">
+                <li>CONTA</li>
+            </a>
+            <a href="app.php">
+                <li>INSTALAR APLICATIVO</li>
+            </a>
+            <a href="app.php">
+                <li>ATIVAR NOTIFICAÇÕES</li>
+            </a>
+            <a href="contactos.php">
+                <li>CONTACTOS</li>
+            </a>
+            <a href="sobre.php">
+                <li>SOBRE</li>
+            </a>
+        </ul>
+        </li>
+  </ul>
+</div>
+        
+</div>
 <style>
-    .menu-mobile{display: none;}
+    .menu-mobile{display: none;
+            position:fixed;
+            top: 24px;
+            left: 11px;
+            z-index:10000;
+            }
     .pesquisa-res {
         display: grid;
         grid-template-columns: 47% 47%;
