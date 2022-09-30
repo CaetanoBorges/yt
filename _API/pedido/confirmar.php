@@ -75,7 +75,7 @@ if(isset($_POST['numero']) and !empty($_POST['numero'])){
             $SMS = 'Pedido novo de '.$qtdItens.' itens no valor de '.$totalSMS.', o número telefonico do cliente é: '.$array['telefone'].'.';
             Funcoes::enviaSMS(["924021937"],$SMS);
 
-            $enviar = Funcoes::enviaEmail($mailer, 'dmucuta@gmail.com', "Pedido novo - YETU | ".$data, $corpo);
+            $enviar = Funcoes::enviaEmail($mailer, 'lojayetu@gmail.com', "Pedido novo - YETU | ".$data, $corpo);
 
             $query = Funcoes::conexao() -> prepare("DELETE FROM sms WHERE digitos = ? AND email = ? OR numero = ? ");
             $query->bindValue(1,$_POST['numero']);

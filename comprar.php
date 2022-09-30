@@ -43,6 +43,7 @@
             <div class="cliente-preco">
                 <p class="itens"></p>
                 <p class="total"></p>
+                
             </div>
 
             <p class="por-favor">POR FAVOR, CONFIRME O NÚMERO DE VALIDAÇÃO QUE RECEBEU POR MENSAGEM<br>
@@ -56,8 +57,8 @@
             </div>
             <p class="nao-recebeu">Não recebeu nenhuma mensagem?</p>
             <p class="para-receber">Click <span onclick="fazerPedido()">aqui</span> para reenviarmos o número de validação</p>
-        </div>
-        
+        </div><br>
+        <p><b>O nosso sistema é pre-pago, o pagamento é feito ao receber os produtos. Pode pagar por TPA, Transferência, ou Dinheiro.</b></p>
         <img src="_icones/compr.png" class="btn-prosseguir" onclick="confirmarPedido()">
     </div>
      

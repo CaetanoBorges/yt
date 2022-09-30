@@ -63,5 +63,15 @@
         },function(){
             $("#mobiliario").hide();
         });
+
+    tbUser.getItem("dados").then(function(dados){
+            if(dados){
+                console.log(dados.nome);
+                setTimeout(function(){
+                     $(".header-top-frase.minha-conta").html(dados.nome);
+                },1000);
+            }
+        })
     })
+
 </script>

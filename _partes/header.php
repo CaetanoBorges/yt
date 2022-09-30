@@ -2,13 +2,13 @@
     <div class="header-body">
         <div class="header-content">
             <ul>
-                <li> <img src="_icones/phone.png" class="header-top-img"><p class="header-top-frase">+244 999 999 999</p></li>
-                <li><img src="_icones/envelope.png" class="header-top-img"><p class="header-top-frase">email@email.com</p></li>
+                <li> <img src="_icones/phone.png" class="header-top-img"><p class="header-top-frase">+244 924 021 937</p></li>
+                <li><img src="_icones/envelope.png" class="header-top-img"><p class="header-top-frase">lojayetu@gmail.com</p></li>
                 <li><img src="_icones/location.png" class="header-top-img"><p class="header-top-frase">Localização loja</p></li>
             </ul>
             
         </div>
-        <a href="conta.php"><img src="_icones/user.png" class="header-top-img"><p class="header-top-frase">Minha conta</p></a>
+        <a href="conta.php"><img src="_icones/user.png" class="header-top-img"><p class="header-top-frase minha-conta">Minha conta</p></a>
     </div>
     
 </div>
@@ -73,13 +73,14 @@
         <div class="menu-submenu-container  aciona-alimentar" id="alimentar">
             <div class="menu-submenu aciona-alimentar">
                 <ul>
+                    <a href="s.php?cestas"><li>Cesta Básica</li></a>
                     <a href="s.php?sereais"><li>Sereais</li></a>
-                    <a href="s.php?sereais"><li>FARINHA DE TRIGO</li></a>
-                    <a href="s.php?sereais"><li>Arroz</li></a>
-                    <a href="s.php?sereais"><li>Leite</li></a>
-                    <a href="s.php?sereais"><li>FARINHA DE MILHO</li></a>
-                    <a href="s.php?sereais"><li>Açucar</li></a>
-                    <a href="s.php?sereais"><li>ÓLEO DE PALMA</li></a>
+                    <a href="s.php?farinha de trigo"><li>FARINHA DE TRIGO</li></a>
+                    <a href="s.php?arroz"><li>Arroz</li></a>
+                    <a href="s.php?leite"><li>Leite</li></a>
+                    <a href="s.php?farinha de milho"><li>FARINHA DE MILHO</li></a>
+                    <a href="s.php?açucar"><li>Açucar</li></a>
+                    <a href="s.php?óleo de palma"><li>ÓLEO DE PALMA</li></a>
                 </ul>
             </div>
         </div>
@@ -237,6 +238,7 @@
   <ul class="dropdown-menu form-control" aria-labelledby="dropdownMenuLink" style="width: fit-content;font-size:9px;">
         <a href="s.php?informaticos" ><li class="dropdown-item form-control">Informaticos</li></a>
         <a href="s.php?alimentar" ><li class="dropdown-item form-control">Alimentar</li></a>
+        <a href="s.php?cestas" ><li class="dropdown-item form-control">Cestas Básicas</li></a>
         <a href="s.php?bebidas"><li class="dropdown-item form-control">Bebidas</li></a>
         <a href="s.php?cosmeticos" ><li class="dropdown-item form-control">Cosmeticos</li></a>
         <a href="s.php?frescos"><li class="dropdown-item form-control">Frescos</li></a>
@@ -262,8 +264,8 @@
             <a href="app.php">
                 <li>ATIVAR NOTIFICAÇÕES</li>
             </a>
-            <a href="contactos.php">
-                <li>CONTACTOS</li>
+            <a href="contactar.php">
+                <li>CONTACTAR</li>
             </a>
             <a href="sobre.php">
                 <li>SOBRE</li>
@@ -405,4 +407,5 @@
     function vaiIndex(){
         location.href="index.php"
     }
+    
 </script>

@@ -13,8 +13,8 @@
             <a href="app.php">
                 <li>ATIVAR NOTIFICAÇÕES</li>
             </a>
-            <a href="contactos.php">
-                <li>CONTACTOS</li>
+            <a href="contactar.php">
+                <li>CONTACTAR</li>
             </a>
             <a href="sobre.php">
                 <li>SOBRE</li>
@@ -37,4 +37,5 @@
         </div>
     </div>
 </div>
+
 

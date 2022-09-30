@@ -80,12 +80,5 @@
 </body>
 </html>
 <script>
-    $.post("https://app.smshub.ao/api/authentication",{authId: "160983163940495315", secretKey: "aNjB8hJZ1gu5NKPCNucqfLwnLhMu92i8wQgdoWPinrxDScvPTsGP62OZHCBVzagcVAnSVbkoXfK1qbLVOLGYdXa2bGMLWSH8CVlw"}).always(function(result){
-        console.log(result);
-        var obj = (result);
-        var objecto = {contactNo:['921797626'], message:"teste de mensagem"};
-        $.post("https://app.smshub.ao/api/sendsms",{accessToken: obj.data.authToken, contactNo:['921797626',"+244947436662"], message:"teste de mensagem"}).always(function(sms){
-            console.log(sms);
-        })
-    })
+   
 </script>
