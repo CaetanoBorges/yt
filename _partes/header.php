@@ -232,8 +232,9 @@
   
     <style>
         .dropdown-menu a{text-decoration: none;text-transform: uppercase;}
+        .dropdown-item{font-size: 9px;}
     </style>
-  <ul class="dropdown-menu form-control" aria-labelledby="dropdownMenuLink" style="width: fit-content;">
+  <ul class="dropdown-menu form-control" aria-labelledby="dropdownMenuLink" style="width: fit-content;font-size:9px;">
         <a href="s.php?informaticos" ><li class="dropdown-item form-control">Informaticos</li></a>
         <a href="s.php?alimentar" ><li class="dropdown-item form-control">Alimentar</li></a>
         <a href="s.php?bebidas"><li class="dropdown-item form-control">Bebidas</li></a>
@@ -246,7 +247,7 @@
             
             <style>
                 .mobile{max-width:fit-content;padding:2%;background: none;border-top: 1px solid red;}
-                .mobile li {margin: 5px 0;color:black !important}
+                .mobile li {margin: 5px 0;color:black !important;font-size: 9px;}
             </style>
             <ul class="menu-baixo mobile">
             <a href="index.php">

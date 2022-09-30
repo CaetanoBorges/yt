@@ -70,7 +70,12 @@ if(isset($_POST['numero']) and !empty($_POST['numero'])){
             $corpo=str_replace("--TELEFONE--",$array['telefone'],$corpo);
             $corpo=str_replace("--BAIRRO--",$array['bairro'],$corpo);
             $corpo=str_replace("--RUA--",$array['rua'],$corpo);
-            $enviar = Funcoes::enviaEmail($mailer, 'cbcaetanoborges@gmail.com', "Pedido novo - YETU | ".$data, $corpo);
+
+            $totalSMS = number_format($total, 0, '', ' ')." kz";
+            $SMS = 'Pedido novo de '.$qtdItens.' itens no valor de '.$totalSMS.', o número telefonico do cliente é: '.$array['telefone'].'.';
+            Funcoes::enviaSMS(["924021937"],$SMS);
+
+            $enviar = Funcoes::enviaEmail($mailer, 'dmucuta@gmail.com', "Pedido novo - YETU | ".$data, $corpo);
 
             $query = Funcoes::conexao() -> prepare("DELETE FROM sms WHERE digitos = ? AND email = ? OR numero = ? ");
             $query->bindValue(1,$_POST['numero']);
