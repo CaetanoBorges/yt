@@ -63,6 +63,10 @@
         <?php 
             include("_partes/slide-sugestao.php");
         ?>
+        <br>
+        <?php 
+            include("_partes/cesta-basica.php");
+        ?>
 
         <?php
             include("_partes/slide-grosso.php");

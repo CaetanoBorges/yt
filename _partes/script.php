@@ -12,6 +12,7 @@
 <script src="_js/slide-um.js"></script>
 <script src="_js/slide-sugestao.js"></script>
 <script src="_js/slide-grosso.js"></script>
+<script src="_js/slide-cesta-basica.js"></script>
 <script src="_js/slide-card.js"></script>
 <script src="_js/one.js"></script>
 <script src="_js/bin/carrinho-adiciona.js"></script>

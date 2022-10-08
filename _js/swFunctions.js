@@ -120,6 +120,7 @@ tbUser.getItem("install").then(function(e) {
         getCategorias();
         getSlide();
         getSugestoes();
+        getCestaBasica();
         return
     }
 
@@ -127,6 +128,7 @@ tbUser.getItem("install").then(function(e) {
     getCategorias();
     getSlide();
     getSugestoes();
+    getCestaBasica();
 
     tbUser.setItem("install", true).then(function(e) {
             setTimeout(function() {

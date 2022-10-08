@@ -1,8 +1,9 @@
-function slideCard(value, parent) {
+function slideCesta(value, parent) {
     console.log(value);
-    $('#yetu-slide-card').append(`
+    $('#yetu-slide-cesta-basica').append(`
     <li>
-                    <div class="slide-item-wrapper">
+                    <div class="slide-item-wrapper" style="position:relative;">
+                        <h5 style="background:red;color:black;padding:5px;font-size:13px;width:fit-content;margin:0 0 1px 0;">CESTA BÁSICA</h5>
                         <div class="prod-item">
                             <div class="img">
                                 <img src="prod/${value.img}">
@@ -17,26 +18,20 @@ function slideCard(value, parent) {
                                 <div class="price">${value.preco} kz</div>
                                 <div class="cart" onclick='addAoCarrinho("${value.id}","${value.img}", "${value.nome}", "${value.preco}")'><img src="_icones/checkout-cart.png"></div>
                             </div>
+                            <div class="detalhes" style="padding:10px;text-align:justify;font-weight:550;">
+                                ${value.descricao}
+                            </div>
                         </div>
                     </div>
                 </li>`)
 
 }
-var produto = (location.search).replace("?", "");
-tbProduto.getItem(produto).then((item) => {
-    if (item) {
-        var resPesquisa = pesquisarProduto(item.categoria);
-        setTimeout(function() {
-            for (var key in resPesquisa) {
-                slideCard(resPesquisa[key], "#yetu-slide-card");
-            }
-        }, 1500)
-    } else {
-        setTimeout(function() {
-            $(".yetu-slide-card").hide();
-        }, 1500)
-    }
-})
+setTimeout(function() {
+    $('#yetu-slide-cesta-basica').html("");
+    tbCesta.iterate(function(value, key, iterator) {
+        slideCesta(value, "#yetu-slide-cesta-basica")
+    }).then();
+}, 1500)
 
 setTimeout(function() {
     $(document).ready(function() {
@@ -45,7 +40,7 @@ setTimeout(function() {
         if (window.screen.availWidth < 1000) {
             ite = 2;
         } else {}
-        var slider = $('#yetu-slide-card').lightSlider({
+        var slider = $('#yetu-slide-cesta-basica').lightSlider({
             gallery: false,
             item: ite,
             speed: 800,
@@ -58,7 +53,7 @@ setTimeout(function() {
             pause: 2000,
             adaptiveHeight: true,
             onSliderLoad: function() {
-                $('#yetu-slide-card').removeClass('cS-hidden');
+                $('#yetu-slide-cesta-basica').removeClass('cS-hidden');
             }
         }).css("z-index", "3");
         $('#prev-slide-card').click(function() {
@@ -68,4 +63,4 @@ setTimeout(function() {
             slider.goToNextSlide();
         });
     });
-}, 3000)
+}, 2700)

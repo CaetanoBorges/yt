@@ -4,7 +4,7 @@
             <ul>
                 <li> <img src="_icones/phone.png" class="header-top-img"><p class="header-top-frase">+244 924 021 937</p></li>
                 <li><img src="_icones/envelope.png" class="header-top-img"><p class="header-top-frase">lojayetu@gmail.com</p></li>
-                <li><img src="_icones/location.png" class="header-top-img"><p class="header-top-frase">Localização loja</p></li>
+                <li><img src="_icones/location.png" class="header-top-img"><p class="header-top-frase">Bairro Mapunda, Lado ao Condominio Mapunda</p></li>
             </ul>
             
         </div>
@@ -264,9 +264,6 @@
             <a href="app.php">
                 <li>ATIVAR NOTIFICAÇÕES</li>
             </a>
-            <a href="contactar.php">
-                <li>CONTACTAR</li>
-            </a>
             <a href="sobre.php">
                 <li>SOBRE</li>
             </a>
@@ -371,6 +368,7 @@
         var categoria = $("#pesq-categoria").val();
         if(maior(pesquisa,3)){
             let result = pesquisarEmCategoria(categoria, pesquisa);
+            let resultCesta = pesquisarEmCestas(categoria, pesquisa);
             console.log(result);
             setTimeout(function(){
                 $('#pesquisamodal').modal('show');
@@ -393,7 +391,24 @@
                                 </div>
                             </div>  
                 </a>`);
-                })
+                });
+
+                resultCesta.forEach(function(el){
+                    var preco = formatNum(Number(el.preco));
+                    $(".pesquisa-res").append(`
+                       <a href="p.php?${el.id}" class="link-pesquisa"> <div class="item">
+                                <img src="prod/${el.img}" class="img">
+                                <div class="detalhes">
+                                    <p class="nome">${el.nome}</p>
+                                    <div class="preco-qtd">
+                                        <div class="preco-total">
+                                            <img src="_icones/coins.png"> <p>${preco}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>  
+                </a>`);
+                });
             },2000);
 
             return

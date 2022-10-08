@@ -171,6 +171,7 @@ self.addEventListener('sync', function(event) {
         pegaSugestoes();
         pegaCategorias();
         pegaSlide();
+        pegaCestaBasica();
 
         tbUser.getItem("token").then(function(token) {
             if (token) {

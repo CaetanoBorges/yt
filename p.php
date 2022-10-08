@@ -72,19 +72,36 @@
      <script>
         var produto = (location.search).replace("?","");
         tbProduto.getItem(produto).then((item)=>{
-            console.log(item);
-            
-            $("head title").html(item.nome);
-            $(".produto-preco-unitario").val(item.preco);
+            if(item){
+                $("head title").html(item.nome);
+                $(".produto-preco-unitario").val(item.preco);
 
-            $(".preco-unitario-prod p").html(formatNum(Number(item.preco)));
-            $(".preco-total-prod p").html("Total: "+formatNum(Number(item.preco)));
-            $(".detalhes .nome").html(item.nome);
-            $(".detalhes .quantidade-existente").html("Restam "+item.qtd +" "+item.unidades);
-            $(".detalhes .qtd-existente").val(item.qtd);
-            $(".detalhes .categoria").html(item.categoria);
-            $(".detalhes .descricao").html(item.descricao);
-            $(".produto-item .img img").attr("src","prod/" + item.img);
+                $(".preco-unitario-prod p").html(formatNum(Number(item.preco)));
+                $(".preco-total-prod p").html("Total: "+formatNum(Number(item.preco)));
+                $(".detalhes .nome").html(item.nome);
+                $(".detalhes .quantidade-existente").html("Restam "+item.qtd +" "+item.unidades);
+                $(".detalhes .qtd-existente").val(item.qtd);
+                $(".detalhes .categoria").html(item.categoria);
+                $(".detalhes .descricao").html(item.descricao);
+                $(".produto-item .img img").attr("src","prod/" + item.img);
+            }else{
+                
+                tbCesta.getItem(produto).then((item)=>{    
+                    $("head title").html(item.nome);
+                    $(".produto-preco-unitario").val(item.preco);
+
+                    $(".preco-unitario-prod p").html(formatNum(Number(item.preco)));
+                    $(".preco-total-prod p").html("Total: "+formatNum(Number(item.preco)));
+                    $(".detalhes .nome").html(item.nome);
+                    $(".detalhes .quantidade-existente").html("Restam "+item.qtd +" "+item.unidades);
+                    $(".detalhes .qtd-existente").val(item.qtd);
+                    $(".detalhes .categoria").html(item.categoria);
+                    $(".detalhes .descricao").html(item.descricao);
+                    $(".produto-item .img img").attr("src","prod/" + item.img);
+                })
+            }
+            
+            
         });
         $(".por-action").click(function(){
                 var url = ($('.produto-item .img img')[0].src).split("/")[5];

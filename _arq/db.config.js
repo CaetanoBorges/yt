@@ -19,3 +19,6 @@ var tbCategorias = localforage.createInstance({
 var tbSlide = localforage.createInstance({
     name: "slide"
 });
+var tbCesta = localforage.createInstance({
+    name: "cesta"
+});

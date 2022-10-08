@@ -163,3 +163,34 @@ function pegaProdutos() {
             });
         });
 }
+
+//----------
+async function getCestaBasica() {
+    $.get("_API/dados/cestas.php").done(function(dado) {
+        let dad = JSON.parse(dado);
+        let dados = JSON.parse(dad.payload);
+        tbCesta.clear();
+        dados.forEach(el => {
+            tbCesta.setItem(el['id'], el);
+
+        });
+    }).fail(function(e) {
+
+    }).always(function(a) {
+        if (a.status) {} else {}
+    });
+}
+
+function pegaCestaBasica() {
+    fetch('_API/dados/cestas.php')
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(jso) {
+            let json = JSON.parse(jso.payload);
+            tbCesta.clear();
+            json.forEach(el => {
+                tbCesta.setItem(el['id'], el);
+            });
+        });
+}

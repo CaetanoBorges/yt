@@ -41,6 +41,7 @@
     <script>
             var produto = (location.search).replace("?","");
             var res = pesquisarProduto(produto);
+            var resCestas = pesquisarCesta(produto);
             setTimeout(function(){
                 for (const key in res) {
                     let value = res[key];
@@ -60,9 +61,29 @@
                         </div>
                     </div>`)
                 }
+                for (const ke in resCestas) {
+                    let val = resCestas[ke];
+                    $(".card-itens-produto").append(`<div class="prod-item" style="position:relative;">
+                        <h5 style="background:red;color:black;padding:5px;font-size:11px;width:fit-content;margin:0 0 1px 0;position:absolute;top:0;left:0;z-index:999;">CESTA BÁSICA</h5>
+                        <div class="img">
+                            <img src="prod/${val.img}">
+                            <div class="assert-nome-prod">
+                                <div class="nome-prod">
+                                    ${val.nome}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="view-price-cart">
+                            <div class="view"><a href="p.php?${val.id}"><img src="_icones/eye-.png"></a></div>
+                            <div class="price">${val.preco} kz</div>
+                            <div class="cart" onclick='addAoCarrinho("${val.id}","${val.img}", "${val.nome}", "${val.preco}")'><img src="_icones/checkout-cart.png"></div>
+                        </div>
+                    </div>`)
+                }
 
-                    
-                $(".res").html((res.length)+" produto(s)")
+                let resultadosN=(res.length)+(resCestas.length);
+                $(".res").html((resultadosN)+" produto(s)");
+                console.log(resultadosN);
             },2000);
             setTimeout(function(){
                 var itensTodos = $(".prod-item");
