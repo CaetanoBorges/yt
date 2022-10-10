@@ -45,12 +45,14 @@ if (isset($_SESSION['yetu-debliw'])) {
     .principal-corpo{width: 90%;display: block;padding: 5%;background-color: #ddd;}
     .principal-corpo a{color:black;text-decoration: none;}
     .principal-corpo a:hover{color:red;}
-    
+    .cestas{width: 100%;text-align: center;background: blue;display: block; color:white !important; margin:0;}
     </style>
     <body>
         <div class="principal">
             <a href="index.php" class="titulo"><h2>ESTOQUE</h2></a>
             <div class="principal-corpo">
+                <a href="cestas.php" class="cestas">CESTAS BÁSICAS</a>
+                <br><br>
                 <a href="addStock.php">ADICIONAR ESTOQUE</a>
                 <br><br><br>
                 <?php

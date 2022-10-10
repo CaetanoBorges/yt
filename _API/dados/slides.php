@@ -13,7 +13,13 @@ $query = $conexao->prepare("SELECT * FROM produto WHERE slide != ''");
 $query->execute();
 $re = $query->fetchAll();
 
-$return['payload'] = json_encode($re);
+$query = $conexao->prepare("SELECT * FROM cestas WHERE slide != ''");
+$query->execute();
+$reC = $query->fetchAll();
+
+$result = array_merge($re, $reC);
+
+$return['payload'] = json_encode($result);
 $return['ok'] = true;
 
 echo json_encode($return);
