@@ -50,13 +50,19 @@ if(isset($_POST['numero']) and !empty($_POST['numero'])){
             $produtos = '';
             foreach($itens as $key => $v){ 
                 $v = (array) $v;
-                $produtos.='<div style="width: 100%;display:block;position:relative;">'
-                    .'<p stayle="margin:0;font-size:14px;">Nome: <b>'. $v['nome'] .'</b></p>'
-                    .'<p stayle="margin:0;font-size:14px;">Preco: <b>'.number_format($v['preco'], 0, '', ' ') .' kz</b></p>'
-                    .'<p stayle="margin:0;font-size:14px;">Quantidade: <b>'. $v['qtd'] .'</b></p>'
-                    .'<p stayle="margin:0;font-size:14px;">Total: <b>'. number_format($v['total'], 0, '', ' ') .' kz</b></p>'
-                .'</div>'
-                .'<hr>';
+                $produtos.='<tr style="width: 400px;display: block;margin:0;border-bottom:1px solid black;position:relative;margin:10px">
+                                <td style="width: 200px;border-right:1px solid black;"><b>Nome</b></td>
+                                <td style="width: 200px;"><b>'. $v['nome'] .'</b></td>
+                            </tr><tr style="width: 400px;display: block;margin:0;border-bottom:1px solid black;position:relative;margin:10px">
+                                <td style="width: 200px;border-right:1px solid black;"><b>Preco</b></td>
+                                <td style="width: 200px;"><b>'.number_format($v['preco'], 0, '', ' ') .' kz</b></td>
+                            </tr><tr style="width: 400px;display: block;margin:0;border-bottom:1px solid black;position:relative;margin:10px">
+                                <td style="width: 200px;border-right:1px solid black;"><b>Quantidade</b></td>
+                                <td style="width: 200px;"><b>'. $v['qtd'] .'</b></td>
+                            </tr><tr style="width: 400px;display: block;margin:0;border-bottom:1px solid black;position:relative;margin:10px">
+                                <td style="width: 200px;border-right:1px solid black;"><b>Total</b></td>
+                                <td style="width: 200px;"><b>'. number_format($v['total'], 0, '', ' ') .' kz</b></td>
+                            </tr>';
             }
 
             $mailer = new PHPMailer(true);
